@@ -9,7 +9,6 @@ RP2040 W5100 network examples - Azure cloud functions, Azure IoT SDK, Azure IoT 
   - [2.1. 📚 Download SDK library](#21--download-sdk-library)
     - [2.1.1. Download azure-iot-sdk-c library](#211-download-azure-iot-sdk-c-library)
     - [2.1.2. Download mbedtls library](#212-download-mbedtls-library)
-    - [2.1.3. Building mbedtls library](#213-building-mbedtls-library)
   - [2.2. 🗂 Build a sample](#22--build-a-sample)
     - [2.2.1. Make "port" directory for Azure IoT SDK, mbedtls](#221-make-port-directory-for-azure-iot-sdk-mbedtls)
     - [2.2.2. Modify CMakeLists.txt](#222-modify-cmakeliststxt)
