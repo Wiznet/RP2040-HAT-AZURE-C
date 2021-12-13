@@ -6,22 +6,19 @@ RP2040 W5100 network examples - Azure cloud functions, Azure IoT SDK, Azure IoT 
 - [1. 🎯 Azure-IoT-SDK](#1--azure-iot-sdk)
   - [1.1. 3rd party SDKs](#11-3rd-party-sdks)
 - [2. 🎓 Getting started](#2--getting-started)
-  - [2.1. 📚 Download SDK library](#21--download-sdk-library)
-    - [2.1.1. Download azure-iot-sdk-c library](#211-download-azure-iot-sdk-c-library)
-    - [2.1.2. Download mbedtls library](#212-download-mbedtls-library)
-  - [2.2. 🗂 Build a sample](#22--build-a-sample)
-    - [2.2.1. Make "port" directory for Azure IoT SDK, mbedtls](#221-make-port-directory-for-azure-iot-sdk-mbedtls)
-    - [2.2.2. Modify CMakeLists.txt](#222-modify-cmakeliststxt)
-    - [2.2.3. Set your board network information and select application](#223-set-your-board-network-information-and-select-application)
-    - [2.2.4. Set the key information](#224-set-the-key-information)
-  - [2.3. ⏳ Build project](#23--build-project)
-    - [2.3.1. Build command](#231-build-command)
-    - [2.3.2. Example command log](#232-example-command-log)
-  - [2.4. 📝 Sample application results](#24--sample-application-results)
-    - [2.4.1. 📬 "iothub_ll_telemetry_sample" application result](#241--iothub_ll_telemetry_sample-application-result)
-    - [2.4.2. 📩 "iothub_ll_c2d_sample" application result](#242--iothub_ll_c2d_sample-application-result)
-    - [2.4.3. 🔐 "iothub_ll_client_x509_sample" application result](#243--iothub_ll_client_x509_sample-application-result)
-    - [2.4.4. 🚢 "prov_dev_client_ll_sample" application result](#244--prov_dev_client_ll_sample-application-result)
+  - [2.1. 🗂 Build a sample](#21--build-a-sample)
+    - [2.1.1. Make "port" directory for Azure IoT SDK, mbedtls](#211-make-port-directory-for-azure-iot-sdk-mbedtls)
+    - [2.1.2. Modify CMakeLists.txt](#212-modify-cmakeliststxt)
+    - [2.1.3. Set your board network information and select application](#213-set-your-board-network-information-and-select-application)
+    - [2.1.4. Set the key information](#214-set-the-key-information)
+  - [2.2. ⏳ Build project](#22--build-project)
+    - [2.2.1. Build command](#221-build-command)
+    - [2.2.2. Example command log](#222-example-command-log)
+  - [2.3. 📝 Sample application results](#23--sample-application-results)
+    - [2.3.1. 📬 "iothub_ll_telemetry_sample" application result](#231--iothub_ll_telemetry_sample-application-result)
+    - [2.3.2. 📩 "iothub_ll_c2d_sample" application result](#232--iothub_ll_c2d_sample-application-result)
+    - [2.3.3. 🔐 "iothub_ll_client_x509_sample" application result](#233--iothub_ll_client_x509_sample-application-result)
+    - [2.3.4. 🚢 "prov_dev_client_ll_sample" application result](#234--prov_dev_client_ll_sample-application-result)
 
 ------
 
@@ -51,35 +48,11 @@ on getting up and running.
 
 
 
-## 2.1. 📚 Download SDK library
+## 2.1. 🗂 Build a sample
 
 
 
-### 2.1.1. Download azure-iot-sdk-c library
-
-This repo get the local copy version for this project.
-
-If you need, you can get this version from releae section in the git repo
-- LTS_07_2021_Ref01 : https://github.com/Azure/azure-iot-sdk-c/releases/tag/LTS_07_2021_Ref01
-
-- 📑 For details, Please read [_0_install_Azure_IoT_SDK.md](_0_install_Azure_IoT_SDK.md)
-
-
-
-### 2.1.2. Download mbedtls library
-
-This repo get the local copy version for this project.
-
-If you need, you can get this version from release section in their git repo
-- Mbed TLS 3.0.0 - https://github.com/ARMmbed/mbedtls/releases/tag/v3.0.0
-
-
-
-## 2.2. 🗂 Build a sample
-
-
-
-### 2.2.1. Make "port" directory for Azure IoT SDK, mbedtls
+### 2.1.1. Make "port" directory for Azure IoT SDK, mbedtls
 
 For Pico W5100S platform, we need to make port codes, please check out the [Microsoft Azure SDK porting guide document](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md).
 
@@ -87,7 +60,7 @@ From upper porting guide, the repo has a example `RP2040-HAT-AZURE-C\port\azure-
 
 
 
-### 2.2.2. Modify CMakeLists.txt
+### 2.1.2. Modify CMakeLists.txt
 
 In the following [`RP2040-HAT-AZURE-C/CMakeLists.txt`](CMakeLists.txt) file, find the line similar to this and replace it as your environment:
 
@@ -118,7 +91,7 @@ endif()
 
 
 
-### 2.2.3. Set your board network information and select application
+### 2.1.3. Set your board network information and select application
 
 In the following [`RP2040-HAT-AZURE-C/examples/main.c`](examples/main.c) source file, find the line similar to this and replace it as you want:
 
@@ -152,7 +125,7 @@ static wiz_NetInfo g_net_info =
 
 
 
-### 2.2.4. Set the key information
+### 2.1.4. Set the key information
 
 Edit the [`RP2040-HAT-AZURE-C/examples/sample_certs.c`](examples/sample_certs.c) entering the proper connection string and key value from the Azure Portal:
 
@@ -185,11 +158,11 @@ const char pico_az_PRIVATE_KEY[] =
 
 
 
-## 2.3. ⏳ Build project
+## 2.2. ⏳ Build project
 
 
 
-### 2.3.1. Build command
+### 2.2.1. Build command
 
 Run the following CMake commands from the root of the repository:
 
@@ -214,7 +187,7 @@ Then, copy generated "main.uf2" file into your RP-Pico board. Done!!
 
 
 
-### 2.3.2. Example command log
+### 2.2.2. Example command log
 
 > on MSYS2 (MinGW64) + Windows 10 Platform
 
@@ -378,28 +351,28 @@ $ cp main.uf2 /f/
 
 
 
-## 2.4. 📝 Sample application results
+## 2.3. 📝 Sample application results
 
 
 
-### 2.4.1. 📬 "iothub_ll_telemetry_sample" application result
+### 2.3.1. 📬 "iothub_ll_telemetry_sample" application result
 
 📑 [Let's see this doc for iothub_ll_telemetry_sample application](_1_APP_TELEMETRY_manual.md)
 
 
 
-### 2.4.2. 📩 "iothub_ll_c2d_sample" application result
+### 2.3.2. 📩 "iothub_ll_c2d_sample" application result
 
 📑 [Let's see this doc for iothub_ll_c2d_sample application](_2_APP_C2D_manual.md)
 
 
 
-### 2.4.3. 🔐 "iothub_ll_client_x509_sample" application result
+### 2.3.3. 🔐 "iothub_ll_client_x509_sample" application result
 
 📑 [Let's see this doc for iothub_ll_client_x509_sample application](_3_APP_CLIENT_X509_manual.md)
 
 
 
-### 2.4.4. 🚢 "prov_dev_client_ll_sample" application result
+### 2.3.4. 🚢 "prov_dev_client_ll_sample" application result
 
 📑 [Let's see this doc for prov_dev_client_ll_sample application](_4_APP_PROV_X509_manual.md)

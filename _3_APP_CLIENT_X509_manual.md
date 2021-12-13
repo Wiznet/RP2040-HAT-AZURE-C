@@ -9,7 +9,7 @@
   - [1.5. Azure portal](#15-azure-portal)
   - [1.6. Developer PC - Azure IoT Explorer (preview) setting](#16-developer-pc---azure-iot-explorer-preview-setting)
 - [2. Run the example code](#2-run-the-example-code)
-  - [2.1. copy main.uf2 file into your Pico board](#21-copy-mainuf2-file-into-your-pico-board)
+  - [2.1. Copy main.uf2 file into your Pico board](#21-copy-mainuf2-file-into-your-pico-board)
   - [2.2. Serial terminal log](#22-serial-terminal-log)
   - [2.3. Azure IoT Explorer (preview) log](#23-azure-iot-explorer-preview-log)
 

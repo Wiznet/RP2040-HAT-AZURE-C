@@ -11,7 +11,7 @@
   - [1.4. Developer PC - Build](#14-developer-pc---build)
   - [1.5. Developer PC - Serial terminal open](#15-developer-pc---serial-terminal-open)
 - [2. Run the example code](#2-run-the-example-code)
-  - [2.1. copy main.uf2 file into your Pico board](#21-copy-mainuf2-file-into-your-pico-board)
+  - [2.1. Copy main.uf2 file into your Pico board](#21-copy-mainuf2-file-into-your-pico-board)
   - [2.2. Azure IoT Explorer (preview) log](#22-azure-iot-explorer-preview-log)
   - [2.3. Serial terminal log](#23-serial-terminal-log)
   - [2.4. Azure IoT Explorer (preview) log](#24-azure-iot-explorer-preview-log)

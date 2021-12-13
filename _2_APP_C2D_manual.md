@@ -9,7 +9,7 @@
     - [1.2.3. Azure IoT Explorer (preview) setting](#123-azure-iot-explorer-preview-setting)
     - [1.2.4. Serial terminal open](#124-serial-terminal-open)
 - [2. Run the example](#2-run-the-example)
-  - [2.1. copy main.uf2 file into your W5100S-EVB-Pico](#21-copy-mainuf2-file-into-your-w5100s-evb-pico)
+  - [2.1. Copy main.uf2 file into your W5100S-EVB-Pico](#21-copy-mainuf2-file-into-your-w5100s-evb-pico)
   - [2.2. Send 3 messages from IoT device to IoT Hub](#22-send-3-messages-from-iot-device-to-iot-hub)
   - [2.3. Receive 3 C2D messages from IoT Hub to IoT device](#23-receive-3-c2d-messages-from-iot-hub-to-iot-device)
     - [2.3.1. How to send C2D message with Azure IoT Explorer](#231-how-to-send-c2d-message-with-azure-iot-explorer)
