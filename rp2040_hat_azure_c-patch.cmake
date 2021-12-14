@@ -105,8 +105,7 @@ message("submodules ioLibrary_Driver initialised")
 
 file(GLOB IOLIBRARY_DRIVER_PATCHES 
 	"${RP2040_HAT_AZURE_C_PATCH_DIR}/01_iolibrary_driver_ethernet_chip.patch" 
-	"${RP2040_HAT_AZURE_C_PATCH_DIR}/02_iolibrary_driver_ftp_client.patch"
-	"${RP2040_HAT_AZURE_C_PATCH_DIR}/03_iolibrary_driver_sntp.patch"	
+	"${RP2040_HAT_AZURE_C_PATCH_DIR}/02_iolibrary_driver_sntp.patch"	
 	)
 
 foreach(IOLIBRARY_DRIVER_PATCH IN LISTS IOLIBRARY_DRIVER_PATCHES)

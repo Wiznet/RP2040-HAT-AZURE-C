@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) 2021 WIZnet Co.,Ltd
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
 #include "azure_samples.h"
 
 /* Paste in the your iothub connection string  */

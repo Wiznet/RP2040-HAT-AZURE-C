@@ -8,14 +8,15 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdarg.h>
 #include <ctype.h>
-#include <stdarg.h>     
 #include <time.h>
 
 #include "azure_c_shared_utility/platform.h"
 #include "azure_c_shared_utility/tickcounter.h"
 #include "azure_c_shared_utility/tlsio_mbedtls.h"
 #include "azure_c_shared_utility/xio.h"
+
 #include "netif.h"
 
 static const char* TAG = "platform";
@@ -43,8 +44,8 @@ int platform_init(void)
     strftime(strftime_buf, sizeof(strftime_buf), "%c", &timeinfo);
     printf("The current date/time is: %s\n", strftime_buf);
 
-    // // maunal getting value from https://www.epochconverter.com/
-    // time_t now = 1633303493;
+    // maunal getting value from https://www.epochconverter.com/
+    //time_t now = 1633303493;
     return 0;
 }
 

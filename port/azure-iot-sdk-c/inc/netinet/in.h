@@ -1,4 +1,4 @@
-#ifndef PORT_NETINET_IN_H
-#define PORT_NETINET_IN_H
-// #include "socket.h"
-#endif
+#ifndef _IN_H_
+#define _IN_H_
+//#include "socket.h"
+#endif /*_IN_H_ */

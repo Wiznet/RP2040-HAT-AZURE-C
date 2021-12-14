@@ -1,6 +1,6 @@
 
-#ifndef __NETUTIL_H__
-#define __NETUTIL_H__
+#ifndef _NETUTIL_H_
+#define _NETUTIL_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -24,4 +24,4 @@ uint32_t ntohl(uint32_t netlong);
 }
 #endif
 
-#endif
+#endif /* _NETUTIL_H_ */

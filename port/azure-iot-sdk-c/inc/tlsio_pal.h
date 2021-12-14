@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-#ifndef TLSIO_PAL_H
-#define TLSIO_PAL_H
+#ifndef _TLSIO_PAL_H_
+#define _TLSIO_PAL_H_
 
 #include "azure_c_shared_utility/tlsio.h"
 #include "umock_c/umock_c_prod.h"
@@ -17,4 +17,4 @@ MOCKABLE_FUNCTION(, const IO_INTERFACE_DESCRIPTION*, tlsio_pal_get_interface_des
 }
 #endif /* __cplusplus */
 
-#endif /* TLSIO_PAL_H */
+#endif /* _TLSIO_PAL_H_ */

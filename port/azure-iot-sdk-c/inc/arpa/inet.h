@@ -1,4 +1,4 @@
-#ifndef PORT_ARPA_INET_H
-#define PORT_ARPA_INET_H
+#ifndef _INET_H_
+#define _INET_H_
 #include "netutil.h"
-#endif
+#endif /* _INET_H_ */

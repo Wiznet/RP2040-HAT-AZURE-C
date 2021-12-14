@@ -7,16 +7,21 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdarg.h>
+#include <stdbool.h>
 #include <ctype.h>
-#include <stdarg.h>     
 #include <time.h>
+
+#include "azure_c_shared_utility/tcpsocketconnection_c.h"
+
 #include "pico/stdlib.h"
+
 #include "wizchip_conf.h"
 #include "socket.h"
-#include "dns.h"
+
 #include "netif.h"
-#include <stdbool.h>
-#include "azure_c_shared_utility/tcpsocketconnection_c.h"
+
+#include "dns.h"
 
 /* structure for adaptation between Azure mbed socket IO and WIZnet W5XXX Connectivity */
 typedef struct
@@ -122,7 +127,8 @@ int tcpsocketconnection_connect(TCPSOCKETCONNECTION_HANDLE tcpSocketConnectionHa
       // rc = net_connect(psock->socket, (sockaddr_t *)&addr, sizeof(addr));
       rc = 0; //succ
       rc = connect(psock->socket, gettingip, port);
-  /*    while(getSn_SR(psock->socket) != SOCK_ESTABLISHED)
+/*    
+      while(getSn_SR(psock->socket) != SOCK_ESTABLISHED)
       {
         if (getSn_SR(psock->socket) == SOCK_CLOSED)
         {
@@ -132,7 +138,7 @@ int tcpsocketconnection_connect(TCPSOCKETCONNECTION_HANDLE tcpSocketConnectionHa
           break;
         }
       }
-  */
+*/
       if (rc < 0) { 
           printf("=== tcpsocketconnection_connect failed ===\n");
           return -1; 

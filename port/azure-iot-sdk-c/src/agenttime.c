@@ -1,14 +1,17 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 #include <stdio.h>
 #include <string.h>
+#include <stdarg.h>
 #include <ctype.h>
-#include <stdarg.h>     
 #include <time.h>
 
 #include "azure_c_shared_utility/agenttime.h"
 #include "azure_c_shared_utility/xlogging.h"
+
 #include "pico/stdlib.h"
+
 #include "netif.h"
 
 static time_t now;

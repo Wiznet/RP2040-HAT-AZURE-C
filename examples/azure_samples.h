@@ -1,6 +1,6 @@
 
-#ifndef PICO_AZURE_SAMPLES_H
-#define PICO_AZURE_SAMPLES_H
+#ifndef _AZURE_SAMPLES_H_
+#define _AZURE_SAMPLES_H_
 
 #ifdef __cplusplus
 extern "C"
@@ -25,4 +25,4 @@ extern "C"
 }
 #endif
 
-#endif /* PICO_AZURE_SAMPLES_H */
+#endif /* _AZURE_SAMPLES_H_ */

@@ -1,4 +1,4 @@
-#ifndef PORT_SYS_SOCKETS_H
-#define PORT_SYS_SOCKETS_H
+#ifndef _SOCKETS_H_
+#define _SOCKETS_H_
 #include "socket.h"
-#endif
+#endif /* _SOCKETS_H_ */

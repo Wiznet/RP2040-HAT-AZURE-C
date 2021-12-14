@@ -1,16 +1,16 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+#include <stdio.h>
 #include <stdlib.h>
-#include "azure_c_shared_utility/gballoc.h"
 #include <stdint.h>
 #include <time.h>
 
 #include "azure_c_shared_utility/tickcounter.h"
 #include "azure_c_shared_utility/optimize_size.h"
 #include "azure_c_shared_utility/xlogging.h"
+#include "azure_c_shared_utility/gballoc.h"
 
-#include <stdio.h>
 #include "pico/stdlib.h"
 
 typedef struct TICK_COUNTER_INSTANCE_TAG
