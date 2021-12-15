@@ -19,14 +19,14 @@ set(IOLIBRARY_DRIVER_SRC_DIR "${RP2040_HAT_AZURE_C_SRC_DIR}/libraries/ioLibrary_
 set(MBEDTLS_SRC_DIR "${RP2040_HAT_AZURE_C_SRC_DIR}/libraries/mbedtls")
 set(PICO_EXTRAS_SRC_DIR "${RP2040_HAT_AZURE_C_SRC_DIR}/libraries/pico-extras")
 set(PICO_SDK_SRC_DIR "${RP2040_HAT_AZURE_C_SRC_DIR}/libraries/pico-sdk")
-set(PICO_SDK_TINYUSB_SRC_DIR "${RP2040_HAT_AZURE_C_SRC_DIR}/libraries/lib/tinyusb")
+set(PICO_SDK_TINYUSB_SRC_DIR "${RP2040_HAT_AZURE_C_SRC_DIR}/libraries/pico-sdk/lib/tinyusb")
 set(RP2040_HAT_AZURE_C_PATCH_DIR "${RP2040_HAT_AZURE_C_SRC_DIR}/patches")
 
 # Delete untracked files in azure-iot-sdk-c
 if(EXISTS "${AZURE_IOT_SDK_C_SRC_DIR}/.git")
 	message("cleaning azure-iot-sdk-c...")
-	execute_process(COMMAND ${GIT_EXECUTABLE} -C ${IOLIBRARY_DRIVER_SRC_DIR} clean -fdx)
-	execute_process(COMMAND ${GIT_EXECUTABLE} -C ${IOLIBRARY_DRIVER_SRC_DIR} reset --hard)
+	execute_process(COMMAND ${GIT_EXECUTABLE} -C ${AZURE_IOT_SDK_C_SRC_DIR} clean -fdx)
+	execute_process(COMMAND ${GIT_EXECUTABLE} -C ${AZURE_IOT_SDK_C_SRC_DIR} reset --hard)
 	message("azure-iot-sdk-c cleaned")
 endif()
 

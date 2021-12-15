@@ -209,9 +209,9 @@ $ cmake .. -G "MSYS Makefiles"
 -- PICO_SDK_PATH = D:/RP2040/RP2040-HAT-AZURE-C/libraries/pico-sdk
 -- Found Git: C:/msys64/usr/bin/git.exe (found version "2.34.1")
 RP2040-HAT-AZURE-C patch utils found
-Submodule 'libraries/azure-iot-sdk-c' (https://github.com/Azure/azure-iot-sdk-c) registered for path 'libraries/azure-iot-sdk-c'
-Submodule 'libraries/ioLibrary_Driver' (https://github.com/Wiznet/ioLibrary_Driver) registered for path 'libraries/ioLibrary_Driver'
-Submodule 'libraries/mbedtls' (https://github.com/ARMmbed/mbedtls) registered for path 'libraries/mbedtls'
+Submodule 'libraries/azure-iot-sdk-c' (https://github.com/Azure/azure-iot-sdk-c.git) registered for path 'libraries/azure-iot-sdk-c'
+Submodule 'libraries/ioLibrary_Driver' (https://github.com/Wiznet/ioLibrary_Driver.git) registered for path 'libraries/ioLibrary_Driver'
+Submodule 'libraries/mbedtls' (https://github.com/ARMmbed/mbedtls.git) registered for path 'libraries/mbedtls'
 Submodule 'libraries/pico-extras' (https://github.com/raspberrypi/pico-extras.git) registered for path 'libraries/pico-extras'
 Submodule 'libraries/pico-sdk' (https://github.com/raspberrypi/pico-sdk.git) registered for path 'libraries/pico-sdk'
 Cloning into '/d/RP2040/RP2040-HAT-AZURE-C/libraries/azure-iot-sdk-c'...
@@ -223,7 +223,7 @@ Submodule path 'libraries/azure-iot-sdk-c': checked out '808a5595f98853a5f2eae2c
 Submodule path 'libraries/ioLibrary_Driver': checked out 'e285249784ce6c09b869502bb6715337b45278e3'
 Submodule path 'libraries/mbedtls': checked out '8df2f8e7b9c7bb9390ac74bb7bace27edca81a2b'
 Submodule path 'libraries/pico-extras': checked out '77eae2836638baf2f61b321eb61125da99bb4445'
-Submodule path 'libraries/pico-sdk': checked out 'bfcbefafc5d2a210551a4d9d80b4303d4ae0adf7'
+Submodule path 'libraries/pico-sdk': checked out '2062372d203b372849d573f252cf7c6dc2800c0a'
 Submodule 'azure-c-shared-utility' (https://github.com/Azure/azure-c-shared-utility.git) registered for path 'c-utility'
 Submodule 'deps/azure-c-testrunnerswitcher' (https://github.com/Azure/azure-c-testrunnerswitcher.git) registered for path 'deps/azure-c-testrunnerswitcher'
 Submodule 'deps/azure-ctest' (https://github.com/Azure/azure-ctest.git) registered for path 'deps/azure-ctest'
@@ -259,11 +259,10 @@ Submodule path 'uamqp': checked out 'b75cdb7e1736a388fe3e9fc2a99493aa1db6f43f'
 Submodule path 'umqtt': checked out '12cb55ee5a926a124f22ad737c7cec35f6af7165'
 Submodule 'tinyusb' (https://github.com/hathach/tinyusb.git) registered for path 'lib/tinyusb'
 Cloning into '/d/RP2040/RP2040-HAT-AZURE-C/libraries/pico-sdk/lib/tinyusb'...
-Submodule path 'lib/tinyusb': checked out 'd49938d0f5052bce70e55c652b657c0a6a7e84fe'
+Submodule path 'lib/tinyusb': checked out '4bfab30c02279a0530e1a56f4a7c539f2d35a293'
 submodules ioLibrary_Driver initialised
 Running patch D:/RP2040/RP2040-HAT-AZURE-C/patches/01_iolibrary_driver_ethernet_chip.patch
-Running patch D:/RP2040/RP2040-HAT-AZURE-C/patches/02_iolibrary_driver_ftp_client.patch
-Running patch D:/RP2040/RP2040-HAT-AZURE-C/patches/03_iolibrary_driver_sntp.patch
+Running patch D:/RP2040/RP2040-HAT-AZURE-C/patches/02_iolibrary_driver_sntp.patch
 PICO_SDK_PATH is D:/RP2040/RP2040-HAT-AZURE-C/libraries/pico-sdk
 Defaulting PICO_PLATFORM to rp2040 since not specified.
 Defaulting PICO platform compiler to pico_arm_gcc since not specified.
@@ -277,7 +276,7 @@ PICO compiler is pico_arm_gcc
 Defaulting PICO target board to pico since not specified.
 Using board configuration from D:/RP2040/RP2040-HAT-AZURE-C/libraries/pico-sdk/src/boards/include/boards/pico.h
 -- Found Python3: C:/Program Files/Python39/python.exe (found version "3.9.6") found components: Interpreter
-TinyUSB available at D:/RP2040/RP2040-HAT-AZURE-C/libraries/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040; adding USB support.
+TinyUSB available at D:/RP2040/RP2040-HAT-AZURE-C/libraries/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040; enabling build support for USB.
 -- AZURE_SDK_DIR = D:/RP2040/RP2040-HAT-AZURE-C/libraries/azure-iot-sdk-c
 -- WIZNET_DIR = D:/RP2040/RP2040-HAT-AZURE-C/libraries/ioLibrary_Driver
 -- MBEDTLS_LIB_DIR = D:/RP2040/RP2040-HAT-AZURE-C/libraries/mbedtls
