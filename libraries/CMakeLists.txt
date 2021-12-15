@@ -218,6 +218,7 @@ target_link_libraries(SNTP_FILES PUBLIC
         ETHERNET_FILES
         )
 
+# AZURE SDK
 add_library(AZURE_SDK_FILES STATIC)
 
 target_sources(AZURE_SDK_FILES PUBLIC
