@@ -61,14 +61,3 @@ target_link_libraries(AZURE_SDK_PORT_FILES PUBLIC
         SNTP_FILES
         AZURE_SDK_FILES
         )
-
-add_definitions(-DUSE_MQTT)
-#add_definitions(-DUSE_HTTP)
-add_definitions(-DDONT_USE_UPLOADTOBLOB)
-add_definitions(-DUSE_PROV_MODULE)
-#add_definitions(-DHSM_TYPE_SYMM_KEY)
-add_definitions(-DHSM_TYPE_X509)
-add_definitions(-DUSE_AZURE_CLOUD_RSA_CERT)
-#add_definitions(-DUSE_BALTIMORE_CERT)
-#add_definitions(-DUSE_MICROSOFTAZURE_DE_CERT)
-#add_definitions(-DUSE_PORTAL_AZURE_CN_CERT)

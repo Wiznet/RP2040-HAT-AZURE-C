@@ -120,9 +120,9 @@ Check "Individual Enrollments" list
 
 For more details,
 
-- please refer [How to manage device enrollments with Azure portal](https://docs.microsoft.com/en-us/azure/iot-dps/how-to-manage-enrollments)
+- Please refer [How to manage device enrollments with Azure portal](https://docs.microsoft.com/en-us/azure/iot-dps/how-to-manage-enrollments)
 
-- OR please read [Quickstart: Provision an X.509 certificate simulated device](https://docs.microsoft.com/en-us/azure/iot-dps/quick-create-simulated-device-x509?tabs=windows&pivots=programming-language-ansi-c) document as well.
+- Or please read [Quickstart: Provision an X.509 certificate simulated device](https://docs.microsoft.com/en-us/azure/iot-dps/quick-create-simulated-device-x509?tabs=windows&pivots=programming-language-ansi-c) document as well.
 
 
 
@@ -132,7 +132,7 @@ For more details,
 
 ![image](https://user-images.githubusercontent.com/6334864/137454913-db68fbd4-b9ae-4c6f-8dd7-8eef3327851b.png)
 
-- Edit [`RP2040-HAT-AZURE-C/exmaples/sample_certs.c`](examples/sample_certs.c) with generated certificates as upper. For Common name, Use "W5100S_EVB_PICO_PROV_X509" used in key generation.
+- Edit [`RP2040-HAT-AZURE-C/exmaples/sample_certs.c`](examples/sample_certs.c) with generated certificates as upper. For common name, Use "W5100S_EVB_PICO_PROV_X509" used in key generation.
   - `pico_az_CERTIFICATE` and `pico_az_PRIVATE_KEY` use key value from files _(prov_device1.crt, prov_device1.key)_
   - `pico_az_id_scope` use "ID Scope" string from [1.2.1. Create Azure Device Provisioning service](#121-create-azure-device-provisioning-service)
   - `pico_az_COMMON_NAME` use "device ID" from [1.1. Developer PC - Generate Device self-signed certificates](#11-developer-pc---generate-device-self-signed-certificates)

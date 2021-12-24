@@ -46,7 +46,19 @@ if(NOT DEFINED PORT_DIR)
     message(STATUS "PORT_DIR = ${PORT_DIR}")
 endif()
 
-# Turn off mbedtls test mode 
+# Set azure-iot-sdk-c
+add_definitions(-DUSE_MQTT)
+#add_definitions(-DUSE_HTTP)
+add_definitions(-DDONT_USE_UPLOADTOBLOB)
+add_definitions(-DUSE_PROV_MODULE)
+#add_definitions(-DHSM_TYPE_SYMM_KEY)
+add_definitions(-DHSM_TYPE_X509)
+add_definitions(-DUSE_AZURE_CLOUD_RSA_CERT)
+#add_definitions(-DUSE_BALTIMORE_CERT)
+#add_definitions(-DUSE_MICROSOFTAZURE_DE_CERT)
+#add_definitions(-DUSE_PORTAL_AZURE_CN_CERT)
+
+# Turn off mbedtls test mode
 set(ENABLE_PROGRAMS OFF CACHE BOOL "Build mbedtls programs")
 set(ENABLE_TESTING OFF CACHE BOOL "Build mbedtls testing")
 add_definitions(-DMBEDTLS_CONFIG_FILE="${PORT_DIR}/mbedtls/inc/ssl_config.h")

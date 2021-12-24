@@ -81,6 +81,8 @@ int main()
 //-----------------------------------------------------------------------------------
 // Pico board configuration - W5100S, GPIO, Timer Setting
 //-----------------------------------------------------------------------------------
+    int8_t networkip_setting = 0;
+
     stdio_init_all();
     wizchip_delay_ms(3000); // wait for 3 seconds
 
@@ -96,7 +98,6 @@ int main()
 
     wizchip_1ms_timer_initialize(repeating_timer_callback);
 
-    int8_t networkip_setting = 0;
 #ifdef _DHCP
     // this example uses DHCP
     networkip_setting = wizchip_network_initialize(true, &g_net_info);
