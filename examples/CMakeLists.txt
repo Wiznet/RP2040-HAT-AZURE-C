@@ -18,7 +18,7 @@ target_include_directories(${TARGET_NAME} PUBLIC
 # Add pico_stdlib library which aggregates commonly used features
 target_link_libraries(${TARGET_NAME} PRIVATE
         pico_stdlib
-	    hardware_spi
+        hardware_spi
         ETHERNET_FILES
         SPI_FILES
         DHCP_FILES

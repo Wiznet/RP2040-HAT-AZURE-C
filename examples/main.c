@@ -84,10 +84,8 @@ int main()
     int8_t networkip_setting = 0;
 
     stdio_init_all();
-    wizchip_delay_ms(3000); // wait for 3 seconds
 
-    // this example will use SPI0 at 5MHz
-    stdio_init_all();
+    wizchip_delay_ms(1000 * 3); // wait for 3 seconds
 
     wizchip_spi_initialize();
     wizchip_cris_initialize();

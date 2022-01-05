@@ -3,9 +3,10 @@
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
+
 #include "azure_samples.h"
 
-/* Paste in the your iothub connection string  */
+/* Paste in the your IoT Hub connection string  */
 const char pico_az_connectionString[] = "[device connection string]";
 
 const char pico_az_x509connectionString[] = "[device connection string]";
