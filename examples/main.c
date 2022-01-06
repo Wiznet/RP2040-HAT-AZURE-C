@@ -61,7 +61,7 @@ static wiz_NetInfo g_net_info =
 };
 
 /* Timer */
-static uint16_t g_sec_cnt = 0;
+static uint16_t g_msec_cnt = 0;
 
 /**
   * ----------------------------------------------------------------------------------------------------
@@ -155,9 +155,14 @@ int main()
 /* Timer callback */
 static void repeating_timer_callback(void)
 {
-    g_sec_cnt++;
+    g_msec_cnt++;
 
 #ifdef _DHCP
-    wizchip_dhcp_time_handler();
+    if (g_msec_cnt >= 1000 - 1)
+    {
+        g_msec_cnt = 0;
+
+        wizchip_dhcp_time_handler();
+    }
 #endif
 }
