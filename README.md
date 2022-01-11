@@ -1,66 +1,70 @@
 <!-- omit in toc -->
 # Raspberry Pi Pico W5100S Azure IoT SDK Examples
 
-RP2040 W5100 network examples - Azure cloud functions, Azure IoT SDK, Azure IoT device client, ...
+RP2040 - W5100S network examples - Azure IoT Cloud functions, Azure IoT SDK, Azure IoT device client, ...
 
-- [1. 🎯 Azure-IoT-SDK](#1--azure-iot-sdk)
-  - [1.1. 3rd party SDKs](#11-3rd-party-sdks)
-- [2. 🎓 Getting started](#2--getting-started)
-  - [2.1. 🗂 Build a sample](#21--build-a-sample)
-    - [2.1.1. Make "port" directory for Azure IoT SDK, mbedtls](#211-make-port-directory-for-azure-iot-sdk-mbedtls)
-    - [2.1.2. Modify CMakeLists.txt](#212-modify-cmakeliststxt)
-    - [2.1.3. Set your board network information and select application](#213-set-your-board-network-information-and-select-application)
+- [1. 🎯 Azure IoT SDK exmaples](#1-azure-iot-sdk-exmaples)
+  - [1.1. 3rd party SDKs & libraries](#11-3rd-party-sdks-&-libraries)
+- [2. 🎓 Getting started](#2-getting-started)
+  - [2.1. 🗂 Set up example](#21-set-up-example)
+    - [2.1.1. Make 'port' directory for azure-iot-sdk-c, ioLibrary_Driver, mbedtls and timer](#211-make-port-directory-for-azure-iot-sdk-c-iolibrary_driver-mbedtls-and-timer)
+    - [2.1.2. Modify 'CMakeLists.txt'](#212-modify-cmakelists-txt)
+    - [2.1.3. Set your board network information and select sample application](#213-set-your-board-network-information-and-select-sample-application)
     - [2.1.4. Set the key information](#214-set-the-key-information)
-  - [2.2. ⏳ Build project](#22--build-project)
-    - [2.2.1. Build command](#221-build-command)
+  - [2.2. ⏳ Build example](#22-build-example)
+    - [2.2.1. Run command](#221-run-command)
     - [2.2.2. Example command log](#222-example-command-log)
-  - [2.3. 📝 Sample application results](#23--sample-application-results)
-    - [2.3.1. 📬 "iothub_ll_telemetry_sample" application result](#231--iothub_ll_telemetry_sample-application-result)
-    - [2.3.2. 📩 "iothub_ll_c2d_sample" application result](#232--iothub_ll_c2d_sample-application-result)
-    - [2.3.3. 🔐 "iothub_ll_client_x509_sample" application result](#233--iothub_ll_client_x509_sample-application-result)
-    - [2.3.4. 🚢 "prov_dev_client_ll_sample" application result](#234--prov_dev_client_ll_sample-application-result)
+  - [2.3. 📝 Sample application results](#23-sample-application-results)
+    - [2.3.1. 📬 'iothub_ll_telemetry_sample' application result](#231-iothub_ll_telemetry_sample-application-result)
+    - [2.3.2. 📩 'iothub_ll_c2d_sample' application result](#232-iothub_ll_c2d_sample-application-result)
+    - [2.3.3. 🔐 'iothub_ll_client_x509_sample' application result](#233-iothub_ll_client_x509_sample-application-result)
+    - [2.3.4. 🚢 'prov_dev_client_ll_sample' application result](#234-prov_dev_client_ll_sample-application-result)
 
 ------
 
 
 
-# 1. 🎯 Azure-IoT-SDK
+# 1. 🎯 Azure IoT SDK exmaples
 
-App|Description
----|---
-[Azure IoT SDK example](examples) | Basic Azure cloud functions with Azure IoT SDK. (NonOS + WIZnet W5100S)
+| Application         | Description                                                             |
+| :-----------------: | ----------------------------------------------------------------------- |
+|[examples](examples) | Basic Azure IoT Cloud functions with Azure IoT SDK. (NonOS + WIZnet W5100S) |
 
 
 
-## 1.1. 3rd party SDKs
+## 1.1. 3rd party SDKs & libraries
 
-- [Azure IoT C SDKs and Libraries](https://github.com/Azure/azure-iot-sdk-c)
-- [Mbed TLS](https://github.com/ARMmbed/mbedtls)
-- [WIZnet ioLibrary](https://github.com/Wiznet/ioLibrary_Driver)
-  - for CMake users => https://github.com/Wiznet/RP2040-HAT-C/blob/main/libraries/CMakeLists.txt
+3rd party SDKs & libraries are in the `RP2040-HAT-AZURE-C\libraries` directory of 'RP2040-HAT-AZURE-C', the example for connecting Azure IoT Cloud.
+
+| SDKs & libraries |                                                                | Description |
+| :--------------: | :------------------------------------------------------------: | ----------- |
+| Azure IoT SDK    | [azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c)    | A collection of C source files consisting of Embedded C (C-SDK) that can be used by embedded applications to securely connect IoT devices to Azure IoT Cloud. |
+| ioLibrary        | [ioLibrary_Driver](https://github.com/Wiznet/ioLibrary_Driver) | A library that can control WIZnet's W5x00 series Ethernet chip. |
+| Mbed TLS         | [mbedtls](https://github.com/ARMmbed/mbedtls)                  | It supports security algorithms and SSL and TLS connection. |
+| Pico SDK         | [pico-sdk](https://github.com/raspberrypi/pico-sdk)            | It makes a development environment for building software applications for the Pico(RP2040) platform. |
+| Pico Extras      | [pico-extras](https://github.com/raspberrypi/pico-extras)      | pico-extras has additional libraries that are not yet ready for inclusion the Pico SDK proper, or are just useful but don't necessarily belong in the Pico SDK. |
 
 
 
 # 2. 🎓 Getting started
 
-See [Getting Started with the Raspberry Pi Pico](https://rptl.io/pico-get-started) and the README in the [pico-sdk](https://github.com/raspberrypi/pico-sdk) for information
-on getting up and running.
+Please refer to '[Getting Started with the Raspberry Pi Pico](https://rptl.io/pico-get-started)' and the 'README' in the '[pico-sdk](https://github.com/raspberrypi/pico-sdk)' for information on getting up and running.
 
 
 
-## 2.1. 🗂 Build a sample
+## 2.1. 🗂 Set up exmaple
 
 
 
-### 2.1.1. Make "port" directory for Azure IoT SDK, mbedtls
+### 2.1.1. Make 'port' directory for azure-iot-sdk-c, ioLibrary_Driver, mbedtls and timer
 
-For Pico W5100S platform, we need to make port codes, please check out the [Microsoft Azure SDK porting guide document](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md).
+For Pico(RP2040) - W5100S platform, we need to port code, please check the [Microsoft Azure IoT SDK porting guide document](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md).
 
-From upper porting guide, the repo has a example `RP2040-HAT-AZURE-C\port\azure-iot-sdk-c` directory for this sample applications.
+Result of above porting can be found in `RP2040-HAT-AZURE-C\port\azure-iot-sdk-c` directory.
 
 
 
-### 2.1.2. Modify CMakeLists.txt
+### 2.1.2. Modify 'CMakeLists.txt'
 
 In the following [`RP2040-HAT-AZURE-C/CMakeLists.txt`](CMakeLists.txt) file, find the line similar to this and replace it as your environment:
 
@@ -91,7 +95,7 @@ endif()
 
 
 
-### 2.1.3. Set your board network information and select application
+### 2.1.3. Set your board network information and select sample application
 
 In the following [`RP2040-HAT-AZURE-C/examples/main.c`](examples/main.c) source file, find the line similar to this and replace it as you want:
 
@@ -127,7 +131,7 @@ static wiz_NetInfo g_net_info =
 
 ### 2.1.4. Set the key information
 
-Edit the [`RP2040-HAT-AZURE-C/examples/sample_certs.c`](examples/sample_certs.c) entering the proper connection string and key value from the Azure Portal:
+Copy & Paste proper connection string and key value from the Azure Portal to [`RP2040-HAT-AZURE-C/examples/sample_certs.c`](examples/sample_certs.c):
 
 ```C
 /* Paste in the your iothub connection string  */
@@ -158,11 +162,11 @@ const char pico_az_PRIVATE_KEY[] =
 
 
 
-## 2.2. ⏳ Build project
+## 2.2. ⏳ Build example
 
 
 
-### 2.2.1. Build command
+### 2.2.1. Run command
 
 Run the following CMake commands from the root of the repository:
 
@@ -171,19 +175,19 @@ mkdir build
 cd build
 
 # As your environment, select
-  cmake .. -G "MSYS Makefiles" ## on MSYS2 (MinGW64) + Windows 10 Platform
+cmake .. -G "MSYS Makefiles" ## on MSYS2 (MinGW64) + Windows 10 Platform
 # or
-  cmake .. -G "Visual Studio 15 2017" ## For Visual Studio 2017
+cmake .. -G "Visual Studio 15 2017" ## For Visual Studio 2017
 # or
-  cmake .. -G "Visual Studio 16 2019" -A Win32
+cmake .. -G "Visual Studio 16 2019" -A Win32
 # or
-  cmake ..
+cmake ..
 
 cd examples
 make
 ```
 
-Then, copy generated "main.uf2" file into your RP-Pico board. Done!!
+Then, copy generated "main.uf2" file into your RP-Pico board. Done!
 
 
 
@@ -354,24 +358,24 @@ $ cp main.uf2 /f/
 
 
 
-### 2.3.1. 📬 "iothub_ll_telemetry_sample" application result
+### 2.3.1. 📬 'iothub_ll_telemetry_sample' application result
 
 📑 [Let's see this doc for iothub_ll_telemetry_sample application](_1_APP_TELEMETRY_manual.md)
 
 
 
-### 2.3.2. 📩 "iothub_ll_c2d_sample" application result
+### 2.3.2. 📩 'iothub_ll_c2d_sample' application result
 
 📑 [Let's see this doc for iothub_ll_c2d_sample application](_2_APP_C2D_manual.md)
 
 
 
-### 2.3.3. 🔐 "iothub_ll_client_x509_sample" application result
+### 2.3.3. 🔐 'iothub_ll_client_x509_sample' application result
 
 📑 [Let's see this doc for iothub_ll_client_x509_sample application](_3_APP_CLIENT_X509_manual.md)
 
 
 
-### 2.3.4. 🚢 "prov_dev_client_ll_sample" application result
+### 2.3.4. 🚢 'prov_dev_client_ll_sample' application result
 
 📑 [Let's see this doc for prov_dev_client_ll_sample application](_4_APP_PROV_X509_manual.md)
