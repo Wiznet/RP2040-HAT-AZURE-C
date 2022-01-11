@@ -60,7 +60,9 @@ Please refer to [Getting Started with the Raspberry Pi Pico](https://rptl.io/pic
 
 ### 2.1.1. Make 'port' directory for azure-iot-sdk-c, ioLibrary_Driver, mbedtls and timer
 
-For Pico(RP2040) - W5100S platform, we need to port code, please check the [Microsoft Azure IoT SDK porting guide document](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md).
+For Pico(RP2040) - W5100S platform, we need to port code, please check porting guide below.
+
+- [How to Port the Azure IoT C SDK to Other Platforms](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)
 
 Result of above porting can be found in `RP2040-HAT-AZURE-C\port\azure-iot-sdk-c` directory.
 
