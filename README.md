@@ -3,28 +3,28 @@
 
 RP2040 - W5100S network examples - Azure IoT Cloud functions, Azure IoT SDK, Azure IoT device client, ...
 
-- [1. 🎯 Azure IoT SDK exmaples](#1-azure-iot-sdk-exmaples)
-  - [1.1. 3rd party SDKs & libraries](#11-3rd-party-sdks-&-libraries)
-- [2. 🎓 Getting started](#2-getting-started)
-  - [2.1. 🗂 Set up example](#21-set-up-example)
+- [1. 🎯 Azure IoT SDK examples](#1--azure-iot-sdk-examples)
+  - [1.1. 3rd party SDKs & libraries](#11-3rd-party-sdks--libraries)
+- [2. 🎓 Getting started](#2--getting-started)
+  - [2.1. 🗂 Set up example](#21--set-up-example)
     - [2.1.1. Make 'port' directory for azure-iot-sdk-c, ioLibrary_Driver, mbedtls and timer](#211-make-port-directory-for-azure-iot-sdk-c-iolibrary_driver-mbedtls-and-timer)
-    - [2.1.2. Modify 'CMakeLists.txt'](#212-modify-cmakelists-txt)
+    - [2.1.2. Modify 'CMakeLists.txt'](#212-modify-cmakeliststxt)
     - [2.1.3. Set your board network information and select sample application](#213-set-your-board-network-information-and-select-sample-application)
     - [2.1.4. Set the key information](#214-set-the-key-information)
-  - [2.2. ⏳ Build example](#22-build-example)
+  - [2.2. ⏳ Build example](#22--build-example)
     - [2.2.1. Run command](#221-run-command)
     - [2.2.2. Example command log](#222-example-command-log)
-  - [2.3. 📝 Sample application results](#23-sample-application-results)
-    - [2.3.1. 📬 'iothub_ll_telemetry_sample' application result](#231-iothub_ll_telemetry_sample-application-result)
-    - [2.3.2. 📩 'iothub_ll_c2d_sample' application result](#232-iothub_ll_c2d_sample-application-result)
-    - [2.3.3. 🔐 'iothub_ll_client_x509_sample' application result](#233-iothub_ll_client_x509_sample-application-result)
-    - [2.3.4. 🚢 'prov_dev_client_ll_sample' application result](#234-prov_dev_client_ll_sample-application-result)
+  - [2.3. 📝 Sample application results](#23--sample-application-results)
+    - [2.3.1. 📬 'iothub_ll_telemetry_sample' application result](#231--iothub_ll_telemetry_sample-application-result)
+    - [2.3.2. 📩 'iothub_ll_c2d_sample' application result](#232--iothub_ll_c2d_sample-application-result)
+    - [2.3.3. 🔐 'iothub_ll_client_x509_sample' application result](#233--iothub_ll_client_x509_sample-application-result)
+    - [2.3.4. 🚢 'prov_dev_client_ll_sample' application result](#234--prov_dev_client_ll_sample-application-result)
 
 ------
 
 
 
-# 1. 🎯 Azure IoT SDK exmaples
+# 1. 🎯 Azure IoT SDK examples
 
 | Application         | Description                                                             |
 | :-----------------: | ----------------------------------------------------------------------- |
@@ -36,23 +36,25 @@ RP2040 - W5100S network examples - Azure IoT Cloud functions, Azure IoT SDK, Azu
 
 3rd party SDKs & libraries are in the `RP2040-HAT-AZURE-C\libraries` directory of 'RP2040-HAT-AZURE-C', the example for connecting Azure IoT Cloud.
 
-| SDKs & libraries |                                                                | Description |
-| :--------------: | :------------------------------------------------------------: | ----------- |
-| Azure IoT SDK    | [azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c)    | A collection of C source files consisting of Embedded C (C-SDK) that can be used by embedded applications to securely connect IoT devices to Azure IoT Cloud. |
-| ioLibrary        | [ioLibrary_Driver](https://github.com/Wiznet/ioLibrary_Driver) | A library that can control WIZnet's W5x00 series Ethernet chip. |
-| Mbed TLS         | [mbedtls](https://github.com/ARMmbed/mbedtls)                  | It supports security algorithms and SSL and TLS connection. |
-| Pico SDK         | [pico-sdk](https://github.com/raspberrypi/pico-sdk)            | It makes a development environment for building software applications for the Pico(RP2040) platform. |
-| Pico Extras      | [pico-extras](https://github.com/raspberrypi/pico-extras)      | pico-extras has additional libraries that are not yet ready for inclusion the Pico SDK proper, or are just useful but don't necessarily belong in the Pico SDK. |
+| SDKs & libraries                                               | Description |
+| :------------------------------------------------------------: | ----------- |
+| [azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c)    | A collection of C source files consisting of Embedded C (C-SDK) that can be used by embedded applications to securely connect IoT devices to Azure IoT Cloud. |
+| [ioLibrary_Driver](https://github.com/Wiznet/ioLibrary_Driver) | A library that can control WIZnet's W5x00 series Ethernet chip. |
+| [mbedtls](https://github.com/ARMmbed/mbedtls)                  | It supports security algorithms and SSL and TLS connection. |
+| [pico-sdk](https://github.com/raspberrypi/pico-sdk)            | It makes a development environment for building software applications for the Pico(RP2040) platform. |
+| [pico-extras](https://github.com/raspberrypi/pico-extras)      | pico-extras has additional libraries that are not yet ready for inclusion the Pico SDK proper, or are just useful but don't necessarily belong in the Pico SDK. |
+
+Each SDKs & libraries consists of submodule.
 
 
 
 # 2. 🎓 Getting started
 
-Please refer to '[Getting Started with the Raspberry Pi Pico](https://rptl.io/pico-get-started)' and the 'README' in the '[pico-sdk](https://github.com/raspberrypi/pico-sdk)' for information on getting up and running.
+Please refer to [Getting Started with the Raspberry Pi Pico](https://rptl.io/pico-get-started) and the README in the [pico-sdk](https://github.com/raspberrypi/pico-sdk) for information on getting up and running.
 
 
 
-## 2.1. 🗂 Set up exmaple
+## 2.1. 🗂 Set up example
 
 
 
