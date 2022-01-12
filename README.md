@@ -38,9 +38,9 @@ RP2040 - W5100S network examples - Azure IoT Cloud functions, Azure IoT SDK, Azu
 
 | SDKs & libraries                                               | Description |
 | :------------------------------------------------------------: | ----------- |
-| [azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c)    | A collection of C source files consisting of Embedded C (C-SDK) that can be used by embedded applications to securely connect IoT devices to Azure IoT Cloud. |
 | [ioLibrary_Driver](https://github.com/Wiznet/ioLibrary_Driver) | A library that can control WIZnet's W5x00 series Ethernet chip. |
 | [mbedtls](https://github.com/ARMmbed/mbedtls)                  | It supports security algorithms and SSL and TLS connection. |
+| [azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c)    | A collection of C source files consisting of Embedded C (C-SDK) that can be used by embedded applications to securely connect IoT devices to Azure IoT Cloud. |
 | [pico-sdk](https://github.com/raspberrypi/pico-sdk)            | It makes a development environment for building software applications for the Pico(RP2040) platform. |
 | [pico-extras](https://github.com/raspberrypi/pico-extras)      | pico-extras has additional libraries that are not yet ready for inclusion the Pico SDK proper, or are just useful but don't necessarily belong in the Pico SDK. |
 
