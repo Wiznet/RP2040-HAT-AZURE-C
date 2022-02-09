@@ -1,18 +1,26 @@
 set(TARGET_NAME main)
-set(TARGET_FILES
-    custom_hsm_x509.c
-    iothub_ll_c2d_sample.c
-    iothub_ll_client_x509_sample.c
-    iothub_ll_telemetry_sample.c    
+set(TARGET_FILES    
     ${TARGET_NAME}.c
-    prov_dev_client_ll_sample.c
     sample_certs.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/custom_hsm_example/custom_hsm_x509.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/iothub_ll_c2d_sample/iothub_ll_c2d_sample.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/iothub_ll_client_x509_sample/iothub_ll_client_x509_sample.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/pnp/pnp_simple_thermostat/pnp_simple_thermostat.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/prov_dev_client_ll_sample/prov_dev_client_ll_sample.c
     )
 
 add_executable(${TARGET_NAME} ${TARGET_FILES})
 
+target_sources(${TARGET_NAME} PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/pnp/common/pnp_device_client_ll.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/pnp/common/pnp_dps_ll.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/pnp/common/pnp_protocol.c
+        )
+
 target_include_directories(${TARGET_NAME} PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/pnp/common
         )
 
 # Add pico_stdlib library which aggregates commonly used features

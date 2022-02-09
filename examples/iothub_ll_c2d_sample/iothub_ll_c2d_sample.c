@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include "pico/stdlib.h"
-#include "pico/util/datetime.h"
 
-#include "wizchip_conf.h"
-#include "netif.h"
+#include "pico/stdlib.h"
+
 #include "iothub.h"
 #include "iothub_device_client_ll.h"
 #include "iothub_client_options.h"
@@ -20,7 +17,6 @@
 #include "azure_prov_client/prov_device_ll_client.h"
 #include "azure_prov_client/prov_security_factory.h"
 
-#include "mbedtls/debug.h"
 #include "azure_samples.h"
 
 /* This sample uses the _LL APIs of iothub_client for example purposes.
@@ -36,19 +32,19 @@ and removing calls to _DoWork will yield the same results. */
 //#define SAMPLE_HTTP
 
 #ifdef SAMPLE_MQTT
-    #include "iothubtransportmqtt.h"
+#include "iothubtransportmqtt.h"
 #endif // SAMPLE_MQTT
 #ifdef SAMPLE_MQTT_OVER_WEBSOCKETS
-    #include "iothubtransportmqtt_websockets.h"
+#include "iothubtransportmqtt_websockets.h"
 #endif // SAMPLE_MQTT_OVER_WEBSOCKETS
 #ifdef SAMPLE_AMQP
-    #include "iothubtransportamqp.h"
+#include "iothubtransportamqp.h"
 #endif // SAMPLE_AMQP
 #ifdef SAMPLE_AMQP_OVER_WEBSOCKETS
-    #include "iothubtransportamqp_websockets.h"
+#include "iothubtransportamqp_websockets.h"
 #endif // SAMPLE_AMQP_OVER_WEBSOCKETS
 #ifdef SAMPLE_HTTP
-    #include "iothubtransporthttp.h"
+#include "iothubtransporthttp.h"
 #endif // SAMPLE_HTTP
 
 #ifdef SET_TRUSTED_CERT_IN_SAMPLES
@@ -56,24 +52,15 @@ and removing calls to _DoWork will yield the same results. */
 #endif // SET_TRUSTED_CERT_IN_SAMPLES
 
 /* Paste in the your iothub connection string  */
-// static const char* connectionString = "[device connection string]";
-// static const char* x509certificate =
-// "-----BEGIN CERTIFICATE-----""\n"
-// "-----END CERTIFICATE-----";
-// static const char* x509privatekey =
-// "-----BEGIN PRIVATE KEY-----""\n"
-// "-----END PRIVATE KEY-----";
+//static const char* connectionString = "[device connection string]";
+static const char *connectionString = pico_az_connectionString;
 
-static const char* connectionString = pico_az_x509connectionString;
-static const char* x509certificate = pico_az_x509certificate;
-static const char* x509privatekey = pico_az_x509privatekey;
-
-#define MESSAGE_COUNT        3
+#define MESSAGE_COUNT 3
 static bool g_continueRunning = true;
 static size_t g_message_count_send_confirmations = 0;
 static size_t g_message_recv_count = 0;
 
-static void send_confirm_callback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback)
+static void send_confirm_callback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void *userContextCallback)
 {
     (void)userContextCallback;
     // When a message is sent this callback will get envoked
@@ -81,7 +68,7 @@ static void send_confirm_callback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void
     (void)printf("Confirmation callback received for message %lu with result %s\r\n", (unsigned long)g_message_count_send_confirmations, MU_ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
 }
 
-static void connection_status_callback(IOTHUB_CLIENT_CONNECTION_STATUS result, IOTHUB_CLIENT_CONNECTION_STATUS_REASON reason, void* user_context)
+static void connection_status_callback(IOTHUB_CLIENT_CONNECTION_STATUS result, IOTHUB_CLIENT_CONNECTION_STATUS_REASON reason, void *user_context)
 {
     (void)reason;
     (void)user_context;
@@ -93,14 +80,15 @@ static void connection_status_callback(IOTHUB_CLIENT_CONNECTION_STATUS result, I
     else
     {
         (void)printf("The device client has been disconnected\r\n");
+        g_continueRunning = false;
     }
 }
 
-static IOTHUBMESSAGE_DISPOSITION_RESULT receive_msg_callback(IOTHUB_MESSAGE_HANDLE message, void* user_context)
+static IOTHUBMESSAGE_DISPOSITION_RESULT receive_msg_callback(IOTHUB_MESSAGE_HANDLE message, void *user_context)
 {
     (void)user_context;
-    const char* messageId;
-    const char* correlationId;
+    const char *messageId;
+    const char *correlationId;
 
     // Message properties
     if ((messageId = IoTHubMessage_GetMessageId(message)) == NULL)
@@ -116,7 +104,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT receive_msg_callback(IOTHUB_MESSAGE_HAND
     IOTHUBMESSAGE_CONTENT_TYPE content_type = IoTHubMessage_GetContentType(message);
     if (content_type == IOTHUBMESSAGE_BYTEARRAY)
     {
-        const unsigned char* buff_msg;
+        const unsigned char *buff_msg;
         size_t buff_len;
 
         if (IoTHubMessage_GetByteArray(message, &buff_msg, &buff_len) != IOTHUB_MESSAGE_OK)
@@ -130,7 +118,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT receive_msg_callback(IOTHUB_MESSAGE_HAND
     }
     else
     {
-        const char* string_msg = IoTHubMessage_GetString(message);
+        const char *string_msg = IoTHubMessage_GetString(message);
         if (string_msg == NULL)
         {
             (void)printf("Failure retrieving byte array message\r\n");
@@ -140,8 +128,8 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT receive_msg_callback(IOTHUB_MESSAGE_HAND
             (void)printf("Received String Message\r\nMessage ID: %s\r\n Correlation ID: %s\r\n Data: <<<%s>>>\r\n", messageId, correlationId, string_msg);
         }
     }
-    const char* property_value = "property_value";
-    const char* property_key = IoTHubMessage_GetProperty(message, property_value);
+    const char *property_value = "property_value";
+    const char *property_key = IoTHubMessage_GetProperty(message, property_value);
     if (property_key != NULL)
     {
         printf("\r\nMessage Properties:\r\n");
@@ -152,18 +140,18 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT receive_msg_callback(IOTHUB_MESSAGE_HAND
     return IOTHUBMESSAGE_ACCEPTED;
 }
 
-void iothub_ll_client_x509_sample(void)
+void iothub_ll_c2d_sample(void)
 {
     IOTHUB_CLIENT_TRANSPORT_PROVIDER protocol;
-    //size_t messages_count = 0;    
+    size_t messages_count = 0;
     IOTHUB_MESSAGE_HANDLE message_handle;
     size_t messages_sent = 0;
 
     float telemetry_temperature;
     float telemetry_humidity;
-    const char* telemetry_scale = "Celsius";
-    //const char* telemetry_msg = "test_message";
-    char telemetry_msg_buffer[80];    
+    const char *telemetry_scale = "Celsius";
+    // const char* telemetry_msg = "test_message";
+    char telemetry_msg_buffer[80];
 
     // Select the Protocol to use with the connection
 #ifdef SAMPLE_MQTT
@@ -217,23 +205,27 @@ void iothub_ll_client_x509_sample(void)
         IoTHubDeviceClient_LL_SetOption(device_ll_handle, OPTION_AUTO_URL_ENCODE_DECODE, &urlEncodeOn);
 #endif
 
-        // Setting connection status callback to get indication of connection to iothub
+#ifdef SAMPLE_HTTP
+        unsigned int timeout = 241000;
+        // Because it can poll "after 9 seconds" polls will happen effectively // at ~10 seconds.
+        // Note that for scalabilty, the default value of minimumPollingTime
+        // is 25 minutes. For more information, see:
+        // https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging
+        unsigned int minimumPollingTime = 9;
+        IoTHubDeviceClient_LL_SetOption(device_ll_handle, OPTION_MIN_POLLING_TIME, &minimumPollingTime);
+        IoTHubDeviceClient_LL_SetOption(device_ll_handle, OPTION_HTTP_TIMEOUT, &timeout);
+#endif // SAMPLE_HTTP \
+    // Setting connection status callback to get indication of connection to iothub
         (void)IoTHubDeviceClient_LL_SetConnectionStatusCallback(device_ll_handle, connection_status_callback, NULL);
 
-        // if (IoTHubDeviceClient_LL_SetMessageCallback(device_ll_handle, receive_msg_callback, &messages_count) != IOTHUB_CLIENT_OK)
-        // Set the X509 certificates in the SDK
-        if (
-            (IoTHubDeviceClient_LL_SetOption(device_ll_handle, OPTION_X509_CERT, x509certificate) != IOTHUB_CLIENT_OK) ||
-            (IoTHubDeviceClient_LL_SetOption(device_ll_handle, OPTION_X509_PRIVATE_KEY, x509privatekey) != IOTHUB_CLIENT_OK)
-            )
+        if (IoTHubDeviceClient_LL_SetMessageCallback(device_ll_handle, receive_msg_callback, &messages_count) != IOTHUB_CLIENT_OK)
         {
-            printf("failure to set options for x509, aborting\r\n");
+            (void)printf("ERROR: IoTHubClient_LL_SetMessageCallback..........FAILED!\r\n");
         }
         else
         {
             do
             {
-
                 if (messages_sent < MESSAGE_COUNT)
                 {
                     // // Construct the iothub message from a string or a byte array
@@ -244,8 +236,8 @@ void iothub_ll_client_x509_sample(void)
                     telemetry_temperature = 20.0f + ((float)rand() / RAND_MAX) * 15.0f;
                     telemetry_humidity = 60.0f + ((float)rand() / RAND_MAX) * 20.0f;
 
-                    sprintf(telemetry_msg_buffer, "{\"temperature\":%.3f,\"humidity\":%.3f,\"scale\":\"%s\"}", 
-                        telemetry_temperature, telemetry_humidity, telemetry_scale);
+                    sprintf(telemetry_msg_buffer, "{\"temperature\":%.3f,\"humidity\":%.3f,\"scale\":\"%s\"}",
+                            telemetry_temperature, telemetry_humidity, telemetry_scale);
                     message_handle = IoTHubMessage_CreateFromString(telemetry_msg_buffer);
 
                     // Set Message property
@@ -270,23 +262,22 @@ void iothub_ll_client_x509_sample(void)
 
                     messages_sent++;
                 }
-                else if (g_message_count_send_confirmations >= MESSAGE_COUNT)
+                // else if (g_message_count_send_confirmations >= MESSAGE_COUNT)
+                else if ((g_message_count_send_confirmations >= MESSAGE_COUNT) && (g_message_recv_count >= MESSAGE_COUNT))
                 {
                     // After all messages are all received stop running
                     g_continueRunning = false;
                 }
 
                 IoTHubDeviceClient_LL_DoWork(device_ll_handle);
-                
-                sleep_ms(500); // wait for 
+
+                sleep_ms(500); // wait for
 
             } while (g_continueRunning);
-
-            // Clean up the iothub sdk handle
-            IoTHubDeviceClient_LL_Destroy(device_ll_handle);
         }
+        // Clean up the iothub sdk handle
+        IoTHubDeviceClient_LL_Destroy(device_ll_handle);
     }
     // Free all the sdk subsystem
     IoTHub_Deinit();
 }
-//===========================

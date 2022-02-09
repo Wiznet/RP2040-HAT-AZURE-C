@@ -33,10 +33,11 @@
   */
 // The application you wish to use should be uncommented
 //
-#define APP_TELEMETRY
+//#define APP_TELEMETRY
 //#define APP_C2D
 //#define APP_CLI_X509
 //#define APP_PROV_X509
+#define APP_PNP_SIMPLE_THERMOSTAT
 
 /**
   * ----------------------------------------------------------------------------------------------------
@@ -125,7 +126,10 @@ int main()
 #endif // APP_CLI_X509
 #ifdef APP_PROV_X509
         prov_dev_client_ll_sample();
-#endif  // APP_PROV_X509
+#endif // APP_PROV_X509
+#ifdef APP_PNP_SIMPLE_THERMOSTAT
+        pnp_simple_thermostat();
+#endif // APP_PNP_SIMPLE_THERMOSTAT
 //-----------------------------------------------------------------------------------
     }
     else

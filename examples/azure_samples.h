@@ -15,11 +15,17 @@ extern const char pico_az_id_scope[];
 extern const char pico_az_COMMON_NAME[];
 extern const char pico_az_CERTIFICATE[];
 extern const char pico_az_PRIVATE_KEY[];
+extern const char pico_az_securityTypeEnvironmentVariable[];
+extern const char pico_az_connectionStringEnvironmentVariable[];
+extern const char pico_az_dpsIdScopeEnvironmentVariable[];
+extern const char pico_az_dpsDeviceIdEnvironmentVariable[];
+extern const char pico_az_dpsDeviceKeyEnvironmentVariable[];
 
 void iothub_ll_telemetry_sample(void);
 void iothub_ll_c2d_sample(void);
 void iothub_ll_client_x509_sample(void);
 void prov_dev_client_ll_sample(void);
+void pnp_simple_thermostat(void);
 
 #ifdef __cplusplus
 }
