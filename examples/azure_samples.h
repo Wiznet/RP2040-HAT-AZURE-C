@@ -18,8 +18,6 @@ extern const char pico_az_PRIVATE_KEY[];
 extern const char pico_az_securityTypeEnvironmentVariable[];
 extern const char pico_az_connectionStringEnvironmentVariable[];
 extern const char pico_az_dpsIdScopeEnvironmentVariable[];
-extern const char pico_az_dpsDeviceIdEnvironmentVariable[];
-extern const char pico_az_dpsDeviceKeyEnvironmentVariable[];
 
 void iothub_ll_telemetry_sample(void);
 void iothub_ll_c2d_sample(void);

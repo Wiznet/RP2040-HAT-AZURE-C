@@ -36,7 +36,3 @@ const char pico_az_securityTypeEnvironmentVariable[] = "connectionString"; // In
 const char pico_az_connectionStringEnvironmentVariable[] = "[IOTHUB_DEVICE_CONNECTION_STRING]";
 
 const char pico_az_dpsIdScopeEnvironmentVariable[] = "[IOTHUB_DEVICE_DPS_ID_SCOPE]";
-
-const char pico_az_dpsDeviceIdEnvironmentVariable[] = "[IOTHUB_DEVICE_DPS_DEVICE_ID]";
-
-const char pico_az_dpsDeviceKeyEnvironmentVariable[] = "[IOTHUB_DEVICE_DPS_DEVICE_KEY]";

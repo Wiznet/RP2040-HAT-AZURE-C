@@ -45,12 +45,10 @@ static const char *g_connectionStringEnvironmentVariable = pico_az_connectionStr
 static const char *g_dpsIdScopeEnvironmentVariable = pico_az_dpsIdScopeEnvironmentVariable;
 
 // Environment variable used to specify this application's DPS device id
-//static const char g_dpsDeviceIdEnvironmentVariable[] = "IOTHUB_DEVICE_DPS_DEVICE_ID";
-static const char *g_dpsDeviceIdEnvironmentVariable = pico_az_dpsDeviceIdEnvironmentVariable;
+static const char g_dpsDeviceIdEnvironmentVariable[] = "IOTHUB_DEVICE_DPS_DEVICE_ID";
 
 // Environment variable used to specify this application's DPS device key
-//static const char g_dpsDeviceKeyEnvironmentVariable[] = "IOTHUB_DEVICE_DPS_DEVICE_KEY";
-static const char *g_dpsDeviceKeyEnvironmentVariable = pico_az_dpsDeviceKeyEnvironmentVariable;
+static const char g_dpsDeviceKeyEnvironmentVariable[] = "IOTHUB_DEVICE_DPS_DEVICE_KEY";
 
 // Environment variable used to optionally specify this application's DPS id scope
 static const char g_dpsEndpointEnvironmentVariable[] = "IOTHUB_DEVICE_DPS_ENDPOINT";
@@ -545,11 +543,15 @@ static bool GetDpsFromEnvironment()
 #else
     bool result;
 
+#if 0
     if ((g_pnpDeviceConfiguration.u.dpsConnectionAuth.endpoint = g_dpsEndpointEnvironmentVariable) == NULL)
     {
         // We will fall back to standard endpoint if one is not specified
         g_pnpDeviceConfiguration.u.dpsConnectionAuth.endpoint = g_dps_DefaultGlobalProvUri;
     }
+#else
+    g_pnpDeviceConfiguration.u.dpsConnectionAuth.endpoint = g_dps_DefaultGlobalProvUri;
+#endif
 
     if ((g_pnpDeviceConfiguration.u.dpsConnectionAuth.idScope = g_dpsIdScopeEnvironmentVariable) == NULL)
     {
