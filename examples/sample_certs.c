@@ -6,7 +6,6 @@
 
 #include "azure_samples.h"
 
-/* Paste in the your IoT Hub connection string  */
 const char pico_az_connectionString[] = "[device connection string]";
 
 const char pico_az_x509connectionString[] = "[device connection string]";
@@ -31,7 +30,7 @@ const char pico_az_PRIVATE_KEY[] =
 "-----BEGIN PRIVATE KEY-----""\n"
 "-----END PRIVATE KEY-----";
 
-const char pico_az_securityTypeEnvironmentVariable[] = "connectionString"; // Input either 'connectionString' or 'DPS'
+const char pico_az_securityTypeEnvironmentVariable[] = "[IOTHUB_DEVICE_SECURITY_TYPE]"; // Input either 'connectionString' or 'DPS'
 
 const char pico_az_connectionStringEnvironmentVariable[] = "[IOTHUB_DEVICE_CONNECTION_STRING]";
 

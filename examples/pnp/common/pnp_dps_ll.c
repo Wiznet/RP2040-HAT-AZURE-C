@@ -97,24 +97,11 @@ IOTHUB_DEVICE_CLIENT_LL_HANDLE PnP_CreateDeviceClientLLHandle_ViaDps(const PNP_D
         LogError("Cannot allocate DPS payload for modelId.");
         result = false;
     }
-#if 0
-    else if ((prov_dev_set_symmetric_key_info(pnpDeviceConfiguration->u.dpsConnectionAuth.deviceId, pnpDeviceConfiguration->u.dpsConnectionAuth.deviceKey) != 0))
-    {
-        LogError("prov_dev_set_symmetric_key_info failed.");
-        result = false;
-    }
-    else if (prov_dev_security_init(SECURE_DEVICE_TYPE_SYMMETRIC_KEY) != 0)
-    {
-        LogError("prov_dev_security_init failed");
-        result = false;
-    }
-#else
     else if (prov_dev_security_init(SECURE_DEVICE_TYPE_X509) != 0)
     {
         LogError("prov_dev_security_init failed");
         result = false;
     }
-#endif
     else if ((provDeviceHandle = Prov_Device_LL_Create(pnpDeviceConfiguration->u.dpsConnectionAuth.endpoint, pnpDeviceConfiguration->u.dpsConnectionAuth.idScope, Prov_Device_MQTT_Protocol)) == NULL)
     {
         LogError("Failed calling Prov_Device_LL_Create");
@@ -180,19 +167,11 @@ IOTHUB_DEVICE_CLIENT_LL_HANDLE PnP_CreateDeviceClientLLHandle_ViaDps(const PNP_D
 
     if (result == true)
     {
-#if 0
-        if (iothub_security_init(IOTHUB_SECURITY_TYPE_SYMMETRIC_KEY) != 0)
-        {
-            LogError("iothub_security_init failed");
-            result = false;
-        }
-#else
         if (iothub_security_init(IOTHUB_SECURITY_TYPE_X509) != 0)
         {
             LogError("iothub_security_init failed");
             result = false;
         }
-#endif
         else if ((deviceHandle = IoTHubDeviceClient_LL_CreateFromDeviceAuth(g_dpsIothubUri, g_dpsDeviceId, MQTT_Protocol)) == NULL)
         {
             LogError("IoTHubDeviceClient_LL_CreateFromDeviceAuth failed");

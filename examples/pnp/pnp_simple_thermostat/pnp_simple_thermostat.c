@@ -44,12 +44,6 @@ static const char *g_connectionStringEnvironmentVariable = pico_az_connectionStr
 //static const char g_dpsIdScopeEnvironmentVariable[] = "IOTHUB_DEVICE_DPS_ID_SCOPE";
 static const char *g_dpsIdScopeEnvironmentVariable = pico_az_dpsIdScopeEnvironmentVariable;
 
-// Environment variable used to specify this application's DPS device id
-static const char g_dpsDeviceIdEnvironmentVariable[] = "IOTHUB_DEVICE_DPS_DEVICE_ID";
-
-// Environment variable used to specify this application's DPS device key
-static const char g_dpsDeviceKeyEnvironmentVariable[] = "IOTHUB_DEVICE_DPS_DEVICE_KEY";
-
 // Environment variable used to optionally specify this application's DPS id scope
 static const char g_dpsEndpointEnvironmentVariable[] = "IOTHUB_DEVICE_DPS_ENDPOINT";
 
@@ -511,16 +505,15 @@ static bool GetConnectionStringFromEnvironment()
 {
     bool result;
 
-    if ((g_pnpDeviceConnectionString = g_connectionStringEnvironmentVariable) == NULL)
+    if (strcmp(g_connectionStringEnvironmentVariable, "IOTHUB_DEVICE_CONNECTION_STRING") == 0)
     {
         printf("Cannot read environment variable=%s\n", g_connectionStringEnvironmentVariable);
         result = false;
     }
     else
     {
-#ifdef USE_PROV_MODULE_FULL
+        g_pnpDeviceConnectionString = g_connectionStringEnvironmentVariable;
         g_pnpDeviceConfiguration.securityType = PNP_CONNECTION_SECURITY_TYPE_CONNECTION_STRING;
-#endif
         result = true;
     }
 
@@ -543,33 +536,24 @@ static bool GetDpsFromEnvironment()
 #else
     bool result;
 
-#if 0
-    if ((g_pnpDeviceConfiguration.u.dpsConnectionAuth.endpoint = g_dpsEndpointEnvironmentVariable) == NULL)
+    if (strcmp(g_dpsEndpointEnvironmentVariable, "IOTHUB_DEVICE_DPS_ENDPOINT") == 0)
     {
         // We will fall back to standard endpoint if one is not specified
         g_pnpDeviceConfiguration.u.dpsConnectionAuth.endpoint = g_dps_DefaultGlobalProvUri;
     }
-#else
-    g_pnpDeviceConfiguration.u.dpsConnectionAuth.endpoint = g_dps_DefaultGlobalProvUri;
-#endif
+    else
+    {
+        g_pnpDeviceConfiguration.u.dpsConnectionAuth.endpoint = g_dpsEndpointEnvironmentVariable;
+    }
 
-    if ((g_pnpDeviceConfiguration.u.dpsConnectionAuth.idScope = g_dpsIdScopeEnvironmentVariable) == NULL)
+    if (strcmp(g_dpsIdScopeEnvironmentVariable, "IOTHUB_DEVICE_DPS_ID_SCOPE") == 0)
     {
         printf("Cannot read environment variable=%s\n", g_dpsIdScopeEnvironmentVariable);
         result = false;
     }
-    else if ((g_pnpDeviceConfiguration.u.dpsConnectionAuth.deviceId = g_dpsDeviceIdEnvironmentVariable) == NULL)
-    {
-        printf("Cannot read environment variable=%s\n", g_dpsDeviceIdEnvironmentVariable);
-        result = false;
-    }
-    else if ((g_pnpDeviceConfiguration.u.dpsConnectionAuth.deviceKey = g_dpsDeviceKeyEnvironmentVariable) == NULL)
-    {
-        printf("Cannot read environment variable=%s\n", g_dpsDeviceKeyEnvironmentVariable);
-        result = false;
-    }
     else
     {
+        g_pnpDeviceConfiguration.u.dpsConnectionAuth.idScope = g_dpsIdScopeEnvironmentVariable;
         g_pnpDeviceConfiguration.securityType = PNP_CONNECTION_SECURITY_TYPE_DPS;
         result = true;
     }
@@ -587,13 +571,15 @@ static bool GetConnectionSettingsFromEnvironment()
     const char *securityTypeString;
     bool result;
 
-    if ((securityTypeString = g_securityTypeEnvironmentVariable) == NULL)
+    if (strcmp(g_securityTypeEnvironmentVariable, "IOTHUB_DEVICE_SECURITY_TYPE") == 0)
     {
         printf("Cannot read environment variable=%s\n", g_securityTypeEnvironmentVariable);
         result = false;
     }
     else
     {
+        securityTypeString = g_securityTypeEnvironmentVariable;
+
         if (strcmp(securityTypeString, g_securityTypeConnectionStringValue) == 0)
         {
             result = GetConnectionStringFromEnvironment();
