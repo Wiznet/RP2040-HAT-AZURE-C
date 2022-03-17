@@ -1,7 +1,7 @@
 <!-- omit in toc -->
 # Raspberry Pi Pico W5100S Azure IoT SDK Examples
 
-RP2040 - W5100S network examples - Azure IoT Cloud functions, Azure IoT SDK, Azure IoT device client, ...
+RP2040 - W5100S or W5500 network examples - Azure IoT Cloud functions, Azure IoT SDK, Azure IoT device client, ...
 
 - [1. 🎯 Azure IoT SDK examples](#1--azure-iot-sdk-examples)
   - [1.1. 3rd party SDKs & libraries](#11-3rd-party-sdks--libraries)
@@ -26,9 +26,9 @@ RP2040 - W5100S network examples - Azure IoT Cloud functions, Azure IoT SDK, Azu
 
 # 1. 🎯 Azure IoT SDK examples
 
-| Application         | Description                                                             |
-| :-----------------: | ----------------------------------------------------------------------- |
-|[examples](examples) | Basic Azure IoT Cloud functions with Azure IoT SDK. (NonOS + WIZnet W5100S) |
+| Application         | Description                                                                          |
+| :-----------------: | ------------------------------------------------------------------------------------ |
+|[examples](examples) | Basic Azure IoT Cloud functions with Azure IoT SDK. (NonOS + WIZnet W5100S or W5500) |
 
 
 
@@ -60,7 +60,7 @@ Please refer to [Getting Started with the Raspberry Pi Pico](https://rptl.io/pic
 
 ### 2.1.1. Make 'port' directory for azure-iot-sdk-c, ioLibrary_Driver, mbedtls and timer
 
-For Pico(RP2040) - W5100S platform, we need to port code, please check porting guide below.
+For Pico(RP2040) - W5100S or W5500 platform, we need to port code, please check porting guide below.
 
 - [How to Port the Azure IoT C SDK to Other Platforms](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)
 
@@ -70,7 +70,31 @@ Result of above porting can be found in `RP2040-HAT-AZURE-C\port\azure-iot-sdk-c
 
 ### 2.1.2. Modify 'CMakeLists.txt'
 
-In the following [`RP2040-HAT-AZURE-C/CMakeLists.txt`](CMakeLists.txt) file, find the line similar to this and replace it as your environment:
+
+
+First, set the ethernet chip according to the evaluation board used in the following [`RP2040-HAT-AZURE-C/CMakeLists.txt`](CMakeLists.txt) file.
+
+| Evaluation board                                                                               | Ethernet chip |
+| :--------------------------------------------------------------------------------------------: | :-----------: |
+| [WIZnet Ethernet HAT](https://docs.wiznet.io/Product/Open-Source-Hardware/wiznet_ethernet_hat) | [W5100S](https://docs.wiznet.io/Product/iEthernet/W5100S/overview) |
+| [W5100S-EVB-Pico](https://docs.wiznet.io/Product/iEthernet/W5100S/w5100s-evb-pico)             | [W5100S](https://docs.wiznet.io/Product/iEthernet/W5100S/overview) |
+| W5500-EVB-Pico                                                                                 | [W5500](https://docs.wiznet.io/Product/iEthernet/W5500/overview) |
+
+For example, when using WIZnet Ethernet HAT or W5100S-EVB-Pico:
+
+```bash
+# Set ethernet chip
+set(WIZNET_CHIP W5100S)
+```
+
+When using W5500-EVB-Pico:
+
+```bash
+# Set ethernet chip
+set(WIZNET_CHIP W5500)
+```
+
+And find the line similar to this and replace it as your environment:
 
 ```bash
 # Set the project root directory if it's not already defined, as may happen if

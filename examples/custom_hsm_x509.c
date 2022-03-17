@@ -10,40 +10,40 @@
 
 // This sample is provided for sample only.  Please do not use this in production
 // For more information please see the devdoc using_custom_hsm.md
-// static const char* const COMMON_NAME = "custom-hsm-example";
-// static const char* const CERTIFICATE = "-----BEGIN CERTIFICATE-----""\n"
-// "BASE64 Encoded certificate Here""\n"
-// "-----END CERTIFICATE-----";
-// static const char* const PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----""\n"
-// "BASE64 Encoded certificate Here""\n"
-// "-----END PRIVATE KEY-----";
+//static const char* const COMMON_NAME = "custom-hsm-example";
+//static const char* const CERTIFICATE = "-----BEGIN CERTIFICATE-----""\n"
+//"BASE64 Encoded certificate Here""\n"
+//"-----END CERTIFICATE-----";
+//static const char* const PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----""\n"
+//"BASE64 Encoded certificate Here""\n"
+//"-----END PRIVATE KEY-----";
 
-static const char* COMMON_NAME = pico_az_COMMON_NAME;
-static const char* CERTIFICATE = pico_az_CERTIFICATE;
-static const char* PRIVATE_KEY = pico_az_PRIVATE_KEY;
+static const char *COMMON_NAME = pico_az_COMMON_NAME;
+static const char *CERTIFICATE = pico_az_CERTIFICATE;
+static const char *PRIVATE_KEY = pico_az_PRIVATE_KEY;
 
 // Provided for sample only
-static const char* const SYMMETRIC_KEY = "Symmetric Key value";
-static const char* const REGISTRATION_NAME = "Registration Name";
+static const char *const SYMMETRIC_KEY = "Symmetric Key value";
+static const char *const REGISTRATION_NAME = "Registration Name";
 
 // Provided for sample only, canned values
-static const unsigned char EK[] = { 0x45, 0x6e, 0x64, 0x6f, 0x72, 0x73, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x6b, 0x65, 0x79, 0x0d, 0x0a };
-static const size_t EK_LEN = sizeof(EK)/sizeof(EK[0]);
-static const unsigned char SRK[] = { 0x53, 0x74, 0x6f, 0x72, 0x65, 0x20, 0x72, 0x6f, 0x6f, 0x74, 0x20, 0x6b, 0x65, 0x79, 0x0d, 0x0a };
+static const unsigned char EK[] = {0x45, 0x6e, 0x64, 0x6f, 0x72, 0x73, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x20, 0x6b, 0x65, 0x79, 0x0d, 0x0a};
+static const size_t EK_LEN = sizeof(EK) / sizeof(EK[0]);
+static const unsigned char SRK[] = {0x53, 0x74, 0x6f, 0x72, 0x65, 0x20, 0x72, 0x6f, 0x6f, 0x74, 0x20, 0x6b, 0x65, 0x79, 0x0d, 0x0a};
 static const size_t SRK_LEN = sizeof(SRK) / sizeof(SRK[0]);
-static const unsigned char ENCRYPTED_DATA[] = { 0x45, 0x6e, 0x63, 0x72, 0x79, 0x70, 0x74, 0x65, 0x64, 0x20, 0x64, 0x61, 0x74, 0x61, 0x0d, 0x0a };
+static const unsigned char ENCRYPTED_DATA[] = {0x45, 0x6e, 0x63, 0x72, 0x79, 0x70, 0x74, 0x65, 0x64, 0x20, 0x64, 0x61, 0x74, 0x61, 0x0d, 0x0a};
 
 typedef struct CUSTOM_HSM_SAMPLE_INFO_TAG
 {
-    const char* certificate;
-    const char* common_name;
-    const char* key;
-    const unsigned char* endorsement_key;
+    const char *certificate;
+    const char *common_name;
+    const char *key;
+    const unsigned char *endorsement_key;
     size_t ek_length;
-    const unsigned char* storage_root_key;
+    const unsigned char *storage_root_key;
     size_t srk_len;
-    const char* symm_key;
-    const char* registration_name;
+    const char *symm_key;
+    const char *registration_name;
 } CUSTOM_HSM_SAMPLE_INFO;
 
 int hsm_client_x509_init(void)
@@ -67,7 +67,7 @@ void hsm_client_tpm_deinit(void)
 HSM_CLIENT_HANDLE custom_hsm_create(void)
 {
     HSM_CLIENT_HANDLE result;
-    CUSTOM_HSM_SAMPLE_INFO* hsm_info = malloc(sizeof(CUSTOM_HSM_SAMPLE_INFO));
+    CUSTOM_HSM_SAMPLE_INFO *hsm_info = malloc(sizeof(CUSTOM_HSM_SAMPLE_INFO));
     if (hsm_info == NULL)
     {
         (void)printf("Failed allocating hsm info\r\n");
@@ -94,15 +94,15 @@ void custom_hsm_destroy(HSM_CLIENT_HANDLE handle)
 {
     if (handle != NULL)
     {
-        CUSTOM_HSM_SAMPLE_INFO* hsm_info = (CUSTOM_HSM_SAMPLE_INFO*)handle;
+        CUSTOM_HSM_SAMPLE_INFO *hsm_info = (CUSTOM_HSM_SAMPLE_INFO *)handle;
         // Free anything that has been allocated in this module
         free(hsm_info);
     }
 }
 
-char* custom_hsm_get_certificate(HSM_CLIENT_HANDLE handle)
+char *custom_hsm_get_certificate(HSM_CLIENT_HANDLE handle)
 {
-    char* result;
+    char *result;
     if (handle == NULL)
     {
         (void)printf("Invalid handle value specified\r\n");
@@ -113,9 +113,9 @@ char* custom_hsm_get_certificate(HSM_CLIENT_HANDLE handle)
         // TODO: Malloc the certificate for the iothub sdk to free
         // this value will be sent unmodified to the tlsio
         // layer to be processed
-        CUSTOM_HSM_SAMPLE_INFO* hsm_info = (CUSTOM_HSM_SAMPLE_INFO*)handle;
+        CUSTOM_HSM_SAMPLE_INFO *hsm_info = (CUSTOM_HSM_SAMPLE_INFO *)handle;
         size_t len = strlen(hsm_info->certificate);
-        if ((result = (char*)malloc(len + 1)) == NULL)
+        if ((result = (char *)malloc(len + 1)) == NULL)
         {
             (void)printf("Failure allocating certificate\r\n");
             result = NULL;
@@ -128,9 +128,9 @@ char* custom_hsm_get_certificate(HSM_CLIENT_HANDLE handle)
     return result;
 }
 
-char* custom_hsm_get_key(HSM_CLIENT_HANDLE handle)
+char *custom_hsm_get_key(HSM_CLIENT_HANDLE handle)
 {
-    char* result;
+    char *result;
     if (handle == NULL)
     {
         (void)printf("Invalid handle value specified\r\n");
@@ -141,9 +141,9 @@ char* custom_hsm_get_key(HSM_CLIENT_HANDLE handle)
         // TODO: Malloc the private key for the iothub sdk to free
         // this value will be sent unmodified to the tlsio
         // layer to be processed
-        CUSTOM_HSM_SAMPLE_INFO* hsm_info = (CUSTOM_HSM_SAMPLE_INFO*)handle;
+        CUSTOM_HSM_SAMPLE_INFO *hsm_info = (CUSTOM_HSM_SAMPLE_INFO *)handle;
         size_t len = strlen(hsm_info->key);
-        if ((result = (char*)malloc(len + 1)) == NULL)
+        if ((result = (char *)malloc(len + 1)) == NULL)
         {
             (void)printf("Failure allocating certificate\r\n");
             result = NULL;
@@ -156,9 +156,9 @@ char* custom_hsm_get_key(HSM_CLIENT_HANDLE handle)
     return result;
 }
 
-char* custom_hsm_get_common_name(HSM_CLIENT_HANDLE handle)
+char *custom_hsm_get_common_name(HSM_CLIENT_HANDLE handle)
 {
-    char* result;
+    char *result;
     if (handle == NULL)
     {
         (void)printf("Invalid handle value specified\r\n");
@@ -168,9 +168,9 @@ char* custom_hsm_get_common_name(HSM_CLIENT_HANDLE handle)
     {
         // TODO: Malloc the common name for the iothub sdk to free
         // this value will be sent to dps
-        CUSTOM_HSM_SAMPLE_INFO* hsm_info = (CUSTOM_HSM_SAMPLE_INFO*)handle;
+        CUSTOM_HSM_SAMPLE_INFO *hsm_info = (CUSTOM_HSM_SAMPLE_INFO *)handle;
         size_t len = strlen(hsm_info->common_name);
-        if ((result = (char*)malloc(len + 1)) == NULL)
+        if ((result = (char *)malloc(len + 1)) == NULL)
         {
             (void)printf("Failure allocating certificate\r\n");
             result = NULL;
@@ -183,7 +183,7 @@ char* custom_hsm_get_common_name(HSM_CLIENT_HANDLE handle)
     return result;
 }
 
-int custom_hsm_get_endorsement_key(HSM_CLIENT_HANDLE handle, unsigned char** key, size_t* key_len)
+int custom_hsm_get_endorsement_key(HSM_CLIENT_HANDLE handle, unsigned char **key, size_t *key_len)
 {
     int result;
     if (handle == NULL || key == NULL || key_len == NULL)
@@ -195,8 +195,8 @@ int custom_hsm_get_endorsement_key(HSM_CLIENT_HANDLE handle, unsigned char** key
     {
         // TODO: Retrieve the endorsement key and malloc the value and return
         // it to the sdk
-        CUSTOM_HSM_SAMPLE_INFO* hsm_info = (CUSTOM_HSM_SAMPLE_INFO*)handle;
-        if ((*key = (unsigned char*)malloc(hsm_info->ek_length)) == NULL)
+        CUSTOM_HSM_SAMPLE_INFO *hsm_info = (CUSTOM_HSM_SAMPLE_INFO *)handle;
+        if ((*key = (unsigned char *)malloc(hsm_info->ek_length)) == NULL)
         {
             (void)printf("Failure allocating endorsement key\r\n");
             result = __LINE__;
@@ -211,7 +211,7 @@ int custom_hsm_get_endorsement_key(HSM_CLIENT_HANDLE handle, unsigned char** key
     return result;
 }
 
-int custom_hsm_get_storage_root_key(HSM_CLIENT_HANDLE handle, unsigned char** key, size_t* key_len)
+int custom_hsm_get_storage_root_key(HSM_CLIENT_HANDLE handle, unsigned char **key, size_t *key_len)
 {
     int result;
     if (handle == NULL || key == NULL || key_len == NULL)
@@ -223,8 +223,8 @@ int custom_hsm_get_storage_root_key(HSM_CLIENT_HANDLE handle, unsigned char** ke
     {
         // TODO: Retrieve the storage root key and malloc the value and return
         // it to the sdk
-        CUSTOM_HSM_SAMPLE_INFO* hsm_info = (CUSTOM_HSM_SAMPLE_INFO*)handle;
-        if ((*key = (unsigned char*)malloc(hsm_info->srk_len)) == NULL)
+        CUSTOM_HSM_SAMPLE_INFO *hsm_info = (CUSTOM_HSM_SAMPLE_INFO *)handle;
+        if ((*key = (unsigned char *)malloc(hsm_info->srk_len)) == NULL)
         {
             (void)printf("Failure allocating storage root key\r\n");
             result = __LINE__;
@@ -239,7 +239,7 @@ int custom_hsm_get_storage_root_key(HSM_CLIENT_HANDLE handle, unsigned char** ke
     return result;
 }
 
-int custom_hsm_sign_with_identity(HSM_CLIENT_HANDLE handle, const unsigned char* data, size_t data_len, unsigned char** key, size_t* key_len)
+int custom_hsm_sign_with_identity(HSM_CLIENT_HANDLE handle, const unsigned char *data, size_t data_len, unsigned char **key, size_t *key_len)
 {
     int result;
     if (handle == NULL || data == NULL || key == NULL || key_len == NULL)
@@ -255,7 +255,7 @@ int custom_hsm_sign_with_identity(HSM_CLIENT_HANDLE handle, const unsigned char*
         // TODO: Need to implement signing the data variable and malloc the key and return it to the sdk
 
         size_t signed_data_len = 10;
-        if ((*key = (unsigned char*)malloc(signed_data_len)) == NULL)
+        if ((*key = (unsigned char *)malloc(signed_data_len)) == NULL)
         {
             (void)printf("Failure allocating storage root key\r\n");
             result = __LINE__;
@@ -270,7 +270,7 @@ int custom_hsm_sign_with_identity(HSM_CLIENT_HANDLE handle, const unsigned char*
     return result;
 }
 
-int custom_hsm_activate_identity_key(HSM_CLIENT_HANDLE handle, const unsigned char* key, size_t key_len)
+int custom_hsm_activate_identity_key(HSM_CLIENT_HANDLE handle, const unsigned char *key, size_t key_len)
 {
     int result;
     if (handle == NULL || key == NULL || key_len == 0)
@@ -286,9 +286,9 @@ int custom_hsm_activate_identity_key(HSM_CLIENT_HANDLE handle, const unsigned ch
     return result;
 }
 
-char* custom_hsm_symm_key(HSM_CLIENT_HANDLE handle)
+char *custom_hsm_symm_key(HSM_CLIENT_HANDLE handle)
 {
-    char* result;
+    char *result;
     if (handle == NULL)
     {
         (void)printf("Invalid handle value specified\r\n");
@@ -296,11 +296,11 @@ char* custom_hsm_symm_key(HSM_CLIENT_HANDLE handle)
     }
     else
     {
-        // TODO: Malloc the symmetric key for the iothub 
+        // TODO: Malloc the symmetric key for the iothub
         // The SDK will call free() this value
-        CUSTOM_HSM_SAMPLE_INFO* hsm_info = (CUSTOM_HSM_SAMPLE_INFO*)handle;
+        CUSTOM_HSM_SAMPLE_INFO *hsm_info = (CUSTOM_HSM_SAMPLE_INFO *)handle;
         size_t len = strlen(hsm_info->symm_key);
-        if ((result = (char*)malloc(len + 1)) == NULL)
+        if ((result = (char *)malloc(len + 1)) == NULL)
         {
             (void)printf("Failure allocating certificate\r\n");
             result = NULL;
@@ -313,9 +313,9 @@ char* custom_hsm_symm_key(HSM_CLIENT_HANDLE handle)
     return result;
 }
 
-char* custom_hsm_get_registration_name(HSM_CLIENT_HANDLE handle)
+char *custom_hsm_get_registration_name(HSM_CLIENT_HANDLE handle)
 {
-    char* result;
+    char *result;
     if (handle == NULL)
     {
         (void)printf("Invalid handle value specified\r\n");
@@ -323,11 +323,11 @@ char* custom_hsm_get_registration_name(HSM_CLIENT_HANDLE handle)
     }
     else
     {
-        // TODO: Malloc the registration name for the iothub 
+        // TODO: Malloc the registration name for the iothub
         // The SDK will call free() this value
-        CUSTOM_HSM_SAMPLE_INFO* hsm_info = (CUSTOM_HSM_SAMPLE_INFO*)handle;
+        CUSTOM_HSM_SAMPLE_INFO *hsm_info = (CUSTOM_HSM_SAMPLE_INFO *)handle;
         size_t len = strlen(hsm_info->registration_name);
-        if ((result = (char*)malloc(len + 1)) == NULL)
+        if ((result = (char *)malloc(len + 1)) == NULL)
         {
             (void)printf("Failure allocating certificate\r\n");
             result = NULL;
@@ -342,46 +342,43 @@ char* custom_hsm_get_registration_name(HSM_CLIENT_HANDLE handle)
 
 // Defining the v-table for the x509 hsm calls
 static const HSM_CLIENT_X509_INTERFACE x509_interface =
-{
-    custom_hsm_create,
-    custom_hsm_destroy,
-    custom_hsm_get_certificate,
-    custom_hsm_get_key,
-    custom_hsm_get_common_name
-};
+    {
+        custom_hsm_create,
+        custom_hsm_destroy,
+        custom_hsm_get_certificate,
+        custom_hsm_get_key,
+        custom_hsm_get_common_name};
 
 // Defining the v-table for the x509 hsm calls
 static const HSM_CLIENT_TPM_INTERFACE tpm_interface =
-{
-    custom_hsm_create,
-    custom_hsm_destroy,
-    custom_hsm_activate_identity_key,
-    custom_hsm_get_endorsement_key,
-    custom_hsm_get_storage_root_key,
-    custom_hsm_sign_with_identity
-};
+    {
+        custom_hsm_create,
+        custom_hsm_destroy,
+        custom_hsm_activate_identity_key,
+        custom_hsm_get_endorsement_key,
+        custom_hsm_get_storage_root_key,
+        custom_hsm_sign_with_identity};
 
 static const HSM_CLIENT_KEY_INTERFACE symm_key_interface =
-{
-    custom_hsm_create,
-    custom_hsm_destroy,
-    custom_hsm_symm_key,
-    custom_hsm_get_registration_name
-};
+    {
+        custom_hsm_create,
+        custom_hsm_destroy,
+        custom_hsm_symm_key,
+        custom_hsm_get_registration_name};
 
-const HSM_CLIENT_TPM_INTERFACE* hsm_client_tpm_interface(void)
+const HSM_CLIENT_TPM_INTERFACE *hsm_client_tpm_interface(void)
 {
     // tpm interface pointer
     return &tpm_interface;
 }
 
-const HSM_CLIENT_X509_INTERFACE* hsm_client_x509_interface(void)
+const HSM_CLIENT_X509_INTERFACE *hsm_client_x509_interface(void)
 {
     // x509 interface pointer
     return &x509_interface;
 }
 
-const HSM_CLIENT_KEY_INTERFACE* hsm_client_key_interface(void)
+const HSM_CLIENT_KEY_INTERFACE *hsm_client_key_interface(void)
 {
     return &symm_key_interface;
 }

@@ -21,10 +21,10 @@ time_t sntp_get_current_timestamp()
     now = wizchip_sntp_get_current_timestamp();
     // from https://www.epochconverter.com/
     //now = 1632801728;
-	return now;
+    return now;
 }
 
-time_t get_time(time_t* currentTime)
+time_t get_time(time_t *currentTime)
 {
     return sntp_get_current_timestamp();
 }
@@ -34,12 +34,12 @@ double get_difftime(time_t stopTime, time_t startTime)
     return (double)stopTime - (double)startTime;
 }
 
-struct tm* get_gmtime(time_t* currentTime)
+struct tm *get_gmtime(time_t *currentTime)
 {
     return NULL;
 }
 
-char* get_ctime(time_t* timeToGet)
+char *get_ctime(time_t *timeToGet)
 {
     return NULL;
 }

@@ -8,7 +8,8 @@
 #include "umock_c/umock_c_prod.h"
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif /* __cplusplus */
 
 MOCKABLE_FUNCTION(, const IO_INTERFACE_DESCRIPTION*, tlsio_pal_get_interface_description);

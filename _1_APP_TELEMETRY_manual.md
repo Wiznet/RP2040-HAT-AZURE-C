@@ -9,7 +9,7 @@
     - [1.2.3. Azure IoT Explorer (preview) setting](#123-azure-iot-explorer-preview-setting)
     - [1.2.4. Serial terminal open](#124-serial-terminal-open)
 - [2. Run the example code](#2-run-the-example-code)
-  - [2.1. Copy main.uf2 file into your W5100S-EVB-Pico](#21-copy-mainuf2-file-into-your-w5100s-evb-pico)
+  - [2.1. Copy main.uf2 file into your W5x00-EVB-Pico](#21-copy-mainuf2-file-into-your-w5x00-evb-pico)
   - [2.2. Serial terminal log](#22-serial-terminal-log)
   - [2.3. Azure IoT Explorer (preview) log](#23-azure-iot-explorer-preview-log)
 
@@ -156,7 +156,7 @@ To see the message from your IoT Device, you need to make a "Azure IoT Explorer"
 
 
 
-## 2.1. Copy main.uf2 file into your W5100S-EVB-Pico
+## 2.1. Copy main.uf2 file into your W5x00-EVB-Pico
 
 ```
 (PWD) RP2040-HAT-AZURE-C/build/examples

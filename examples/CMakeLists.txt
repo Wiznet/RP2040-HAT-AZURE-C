@@ -20,7 +20,7 @@ target_link_libraries(${TARGET_NAME} PRIVATE
         pico_stdlib
         hardware_spi
         ETHERNET_FILES
-        SPI_FILES
+        IOLIBRARY_FILES
         DHCP_FILES
         DNS_FILES
         TIMER_FILES
