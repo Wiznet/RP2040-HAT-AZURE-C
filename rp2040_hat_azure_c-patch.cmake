@@ -104,8 +104,7 @@ execute_process(COMMAND ${GIT_EXECUTABLE} -C ${PICO_SDK_SRC_DIR} submodule updat
 message("submodules ioLibrary_Driver initialised")
 
 file(GLOB IOLIBRARY_DRIVER_PATCHES 
-	"${RP2040_HAT_AZURE_C_PATCH_DIR}/01_iolibrary_driver_ethernet_chip.patch" 
-	"${RP2040_HAT_AZURE_C_PATCH_DIR}/02_iolibrary_driver_sntp.patch"	
+	"${RP2040_HAT_AZURE_C_PATCH_DIR}/01_iolibrary_driver_sntp.patch"	
 	)
 
 foreach(IOLIBRARY_DRIVER_PATCH IN LISTS IOLIBRARY_DRIVER_PATCHES)

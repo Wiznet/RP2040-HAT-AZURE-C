@@ -20,7 +20,7 @@ typedef struct TICK_COUNTER_INSTANCE_TAG
 
 TICK_COUNTER_HANDLE tickcounter_create(void)
 {
-    TICK_COUNTER_INSTANCE* result = (TICK_COUNTER_INSTANCE*)malloc(sizeof(TICK_COUNTER_INSTANCE));
+    TICK_COUNTER_INSTANCE *result = (TICK_COUNTER_INSTANCE *)malloc(sizeof(TICK_COUNTER_INSTANCE));
     if (result == NULL)
     {
         LogError("Failed creating tick counter");
@@ -40,7 +40,7 @@ void tickcounter_destroy(TICK_COUNTER_HANDLE tick_counter)
     }
 }
 
-int tickcounter_get_current_ms(TICK_COUNTER_HANDLE tick_counter, tickcounter_ms_t * current_ms)
+int tickcounter_get_current_ms(TICK_COUNTER_HANDLE tick_counter, tickcounter_ms_t *current_ms)
 {
     int result;
 
@@ -51,9 +51,7 @@ int tickcounter_get_current_ms(TICK_COUNTER_HANDLE tick_counter, tickcounter_ms_
     }
     else
     {
-        *current_ms = (tickcounter_ms_t)(
-            ((uint_fast64_t)(time_us_64() - tick_counter->original_tick_count)) / 1000
-            );
+        *current_ms = (tickcounter_ms_t)(((uint_fast64_t)(time_us_64() - tick_counter->original_tick_count)) / 1000);
         result = 0;
     }
 

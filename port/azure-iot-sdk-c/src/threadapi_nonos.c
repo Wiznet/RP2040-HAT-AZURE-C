@@ -11,7 +11,7 @@ void ThreadAPI_Sleep(unsigned int milliseconds)
     sleep_ms(milliseconds);
 }
 
-THREADAPI_RESULT ThreadAPI_Create(THREAD_HANDLE* threadHandle, THREAD_START_FUNC func, void* arg)
+THREADAPI_RESULT ThreadAPI_Create(THREAD_HANDLE *threadHandle, THREAD_START_FUNC func, void *arg)
 {
     (void)threadHandle;
     (void)func;
@@ -20,7 +20,7 @@ THREADAPI_RESULT ThreadAPI_Create(THREAD_HANDLE* threadHandle, THREAD_START_FUNC
     return THREADAPI_ERROR;
 }
 
-THREADAPI_RESULT ThreadAPI_Join(THREAD_HANDLE threadHandle, int* res)
+THREADAPI_RESULT ThreadAPI_Join(THREAD_HANDLE threadHandle, int *res)
 {
     (void)threadHandle;
     (void)res;

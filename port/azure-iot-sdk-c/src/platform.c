@@ -19,7 +19,7 @@
 
 #include "netif.h"
 
-static const char* TAG = "platform";
+static const char *TAG = "platform";
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private defines -----------------------------------------------------------*/
@@ -29,15 +29,16 @@ static const char* TAG = "platform";
 
 int platform_init(void)
 {
-	time_t now;
+    time_t now;
     struct tm timeinfo;
     wizchip_sntp_init();
 
-    do {
-		printf("Time is not set yet. Getting time over NTP. timeinfo.tm_year:%d\n",timeinfo.tm_year);
+    do
+    {
+        printf("Time is not set yet. Getting time over NTP. timeinfo.tm_year:%d\n", timeinfo.tm_year);
         now = wizchip_sntp_get_current_timestamp();
-    	localtime_r(&now, &timeinfo);
-	// Is time set? If not, tm_year will be (1970 - 1900).
+        localtime_r(&now, &timeinfo);
+        // Is time set? If not, tm_year will be (1970 - 1900).
     } while (timeinfo.tm_year < (2016 - 1900));
     printf("now - %lld\n", now);
     char strftime_buf[64];
@@ -49,11 +50,11 @@ int platform_init(void)
     return 0;
 }
 
-const IO_INTERFACE_DESCRIPTION* platform_get_default_tlsio(void)
+const IO_INTERFACE_DESCRIPTION *platform_get_default_tlsio(void)
 {
     // return tlsio_pal_get_interface_description();
     return tlsio_mbedtls_get_interface_description();
-    // return NULL;
+    //return NULL;
 }
 
 void platform_deinit(void)
