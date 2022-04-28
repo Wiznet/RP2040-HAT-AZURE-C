@@ -1,5 +1,5 @@
 <!-- omit in toc -->
-# Raspberry Pi Pico W5100S Azure IoT SDK Examples
+# Raspberry Pi Pico W5x00 Azure IoT SDK Examples
 
 RP2040 - W5100S or W5500 network examples - Azure IoT Cloud functions, Azure IoT SDK, Azure IoT device client, ...
 
