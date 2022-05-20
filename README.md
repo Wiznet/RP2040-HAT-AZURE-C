@@ -78,7 +78,7 @@ First, set the ethernet chip according to the evaluation board used in the follo
 | :--------------------------------------------------------------------------------------------: | :-----------: |
 | [WIZnet Ethernet HAT](https://docs.wiznet.io/Product/Open-Source-Hardware/wiznet_ethernet_hat) | [W5100S](https://docs.wiznet.io/Product/iEthernet/W5100S/overview) |
 | [W5100S-EVB-Pico](https://docs.wiznet.io/Product/iEthernet/W5100S/w5100s-evb-pico)             | [W5100S](https://docs.wiznet.io/Product/iEthernet/W5100S/overview) |
-| W5500-EVB-Pico                                                                                 | [W5500](https://docs.wiznet.io/Product/iEthernet/W5500/overview) |
+| [W5500-EVB-Pico](https://docs.wiznet.io/Product/iEthernet/W5500/w5500-evb-pico)                | [W5500](https://docs.wiznet.io/Product/iEthernet/W5500/overview) |
 
 For example, when using WIZnet Ethernet HAT or W5100S-EVB-Pico:
 
