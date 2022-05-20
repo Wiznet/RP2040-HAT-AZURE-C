@@ -3,9 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdint.h>
 
 #include "hsm_client_data.h"
+
 #include "azure_samples.h"
 
 // This sample is provided for sample only.  Please do not use this in production
