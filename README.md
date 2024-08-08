@@ -1,3 +1,13 @@
+This repository is no longer maintained and has been archived.
+
+For the latest updates and ongoing development, please visit our new repository at [WIZnet-PICO-AZURE-C][link-wiznet-pico-azure-c].
+
+<!--
+Link
+-->
+
+[link-wiznet-pico-azure-c]: https://github.com/WIZnet-ioNIC/WIZnet-PICO-AZURE-C
+
 <!-- omit in toc -->
 # Raspberry Pi Pico W5x00 Azure IoT SDK Examples
 
